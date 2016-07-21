@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="com.jgoodies:jgoodies-forms:1.9.0" type="repository">
+    <properties maven-id="com.jgoodies:jgoodies-forms:1.9.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jgoodies-forms-1.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jgoodies-common-1.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
