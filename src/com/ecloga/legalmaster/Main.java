@@ -1,7 +1,12 @@
 package com.ecloga.legalmaster;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -21,6 +26,32 @@ public class Main {
         writeDirectory(directoryName);
         writeDirectory(directoryName + File.separator + "media");
         writeDirectory(directoryName + File.separator + "media" + File.separator + "temp");
+
+        Image img = new ImageIcon(Main.class.getResource("/justicia.png")).getImage();
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = 500;
+        int height = 500;
+
+        JWindow window = new JWindow();
+
+        window.getContentPane().add(new JLabel(new ImageIcon(img)));
+        window.getContentPane().setBackground(Color.decode("#ecf0f1"));
+        window.getContentPane().setLayout(new GridBagLayout());
+        window.setSize(new Dimension(width, height));
+        window.setLocation(screenSize.width / 2 - width / 2, screenSize.height / 2 - height / 2);
+
+        //todo UNCOMMEN SNIPPIET LINE BELOW BEORE RELEASE
+        //window.setVisible(true);
+
+//        try {
+//            Thread.sleep(2500);
+//        }catch(InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        window.setVisible(false);
+        window.dispose();
 
         if(fileExists(directoryName + File.separator + "config.lm")) {
             config.add("started");

@@ -3,6 +3,7 @@ package com.ecloga.legalmaster;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -52,6 +55,19 @@ public class Predmeti {
         table.setFillsViewportHeight(true);
         table.getTableHeader().setReorderingAllowed(false);
 
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                if(!isSelected) {
+                    c.setBackground(row % 2 == 0 ? Color.LIGHT_GRAY : Color.WHITE);
+                }
+
+                return c;
+            }
+        });
+
         //todo populate predmeti arraylsit with values from db
 
         scrollPane = new JScrollPane(table);
@@ -86,6 +102,7 @@ public class Predmeti {
                         predmeti.remove(id);
 
                         File media = new File(Main.directoryName + File.separator + "media" + File.separator + id);
+
                         try {
                             FileUtils.deleteDirectory(media);
                         } catch (IOException e1) {
@@ -144,20 +161,16 @@ public class Predmeti {
         maxID++;
         String id = String.valueOf(maxID);
         File srcDir = new File(Main.directoryName + File.separator + "media" + File.separator + "temp");
-        File destDir = new File(Main.directoryName + File.separator + "media" + File.separator + id);
+        String destName = Main.directoryName + File.separator + "media" + File.separator + id;
+        File destDir = new File(destName);
 
         try {
-            if(destDir.exists()) {
-                FileUtils.copyDirectory(srcDir, destDir);
-
-                File[] temporaryMedia = srcDir.listFiles();
-
-                for(File file : temporaryMedia) {
-                    file.delete();
-                }
-            }else {
-                FileUtils.moveDirectory(srcDir, destDir);
+            if(Files.exists(Paths.get(destName))) {
+                FileUtils.deleteDirectory(destDir);
             }
+
+            FileUtils.copyDirectory(srcDir, destDir);
+            FileUtils.cleanDirectory(srcDir);
         }catch(IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
