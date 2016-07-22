@@ -6,17 +6,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Klijenti {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int width = (int) (screenSize.getWidth() * 0.75);
     private int height = (int) (screenSize.getHeight() * 0.75);
     private JPanel panel, tablePanel, menuPanel;
-    private DefaultTableModel model;
-    private JTable table;
+    private static DefaultTableModel model;
+    private static JTable table;
     private JScrollPane scrollPane;
     private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar;
-    private ArrayList<Integer> klijenti = new ArrayList<Integer>();
+    private static ArrayList<String> klijenti = new ArrayList<String>();
+    private static int maxID = 0;
+    public static boolean infoShown = false;
 
     public Klijenti() {
         panel = new JPanel();
@@ -31,7 +34,7 @@ public class Klijenti {
             }
         };
 
-        String[] columns = {"ID", "Ime i prezime", "Broj telefona", "Email", "Adresa", "Racun"};
+        String[] columns = {"ID", "Ime i prezime", "Broj telefona", "Email", "Adresa"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -41,13 +44,22 @@ public class Klijenti {
         table.setFillsViewportHeight(true);
         table.getTableHeader().setReorderingAllowed(false);
 
+        refresh();
+
         scrollPane = new JScrollPane(table);
 
         bDodaj = new JButton("Dodaj");
         bDodaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(!infoShown) {
+                    infoShown = true;
 
+                    KlijentInfo dodaj = new KlijentInfo();
+                    dodaj.show();
+                }else {
+                    JOptionPane.showMessageDialog(null, "Prozor je aktivan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
@@ -57,13 +69,15 @@ public class Klijenti {
             public void actionPerformed(ActionEvent e) {
                 int selectedIndex = table.getSelectedRow();
 
-                String id = String.valueOf(table.getValueAt(selectedIndex, 0));
-
                 if(selectedIndex != -1) {
+                    String id = String.valueOf(table.getValueAt(selectedIndex, 0));
+
+                    Main.executeDB("DELETE FROM klijenti WHERE id=" + id);
                     model.removeRow(selectedIndex);
                     klijenti.remove(id);
-
-                    //todo delete klijent from db, delete all predmeti or klijent from db and directory
+                    //todo delete klijent from db, delete all predmeti of klijent from db and directory
+                }else {
+                    JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -72,7 +86,26 @@ public class Klijenti {
         bIzmeni.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(!infoShown) {
+                    int selectedIndex = table.getSelectedRow();
 
+                    if(selectedIndex != -1) {
+                        infoShown = true;
+
+                        HashMap<Integer, String> info = new HashMap<Integer, String>();
+
+                        for(int i = 0; i < table.getColumnCount(); i++) {
+                            info.put(i, String.valueOf(table.getValueAt(selectedIndex, i)));
+                        }
+
+                        KlijentInfo izmeni = new KlijentInfo(info);
+                        izmeni.show();
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }else {
+                    JOptionPane.showMessageDialog(null, "Prozor je aktivan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
@@ -80,7 +113,16 @@ public class Klijenti {
         bPredmeti.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int selectedIndex = table.getSelectedRow();
 
+                if(selectedIndex != -1) {
+                    String ime = String.valueOf(table.getValueAt(selectedIndex, 1));
+
+                    Predmeti predmeti = new Predmeti(ime);
+                    predmeti.show();
+                }else {
+                    JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
@@ -88,9 +130,33 @@ public class Klijenti {
         bKalendar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                //todo launch kalendar window
             }
         });
+    }
+
+    public static void add(Object[] row) {
+        maxID++;
+        String id = String.valueOf(maxID);
+        row[0] = id;
+        //todo insert row in klijenti db table
+        //Main.executeDB("INSERT INTO klijenti..." + id);
+        model.addRow(row);
+        table.setModel(model);
+        klijenti.add(id);
+    }
+
+    public static void update(Object[] row) {
+        String id = String.valueOf(row[0]);
+        //todo update row in klijenti db table
+        //Main.executeDB(UPDATE klijenti SET... WHERE id=" + id);
+        refresh();
+    }
+
+    public static void refresh() {
+        //todo get rows from klijenti table in db and populate table
+        //todo get maxID
+        //todo popualte klijenti arraylist
     }
 
     public void show() {

@@ -13,41 +13,65 @@ import java.util.ArrayList;
 public class Main {
     public static String directoryName = System.getProperty("user.home") + File.separator + "LegalMaster";
     public static final String DRIVER  = "org.apache.derby.jdbc.EmbeddedDriver";
-    public static final String URL  = "jdbc:derby:legalmaster;create=true";
+    public static final String CREATE_URL  = "jdbc:derby:legalmaster;create=true";
+    public static final String EXECUTE_URL  = "jdbc:derby:legalmaster";
+    public static ArrayList<String> config = new ArrayList<String>();
 
     public static void main(String[] args) {
         writeDirectory(directoryName);
-        writeDirectory(directoryName + File.separator + "predmeti");
-
-        ArrayList<String> config = new ArrayList<String>();
+        writeDirectory(directoryName + File.separator + "media");
+        writeDirectory(directoryName + File.separator + "media" + File.separator + "temp");
 
         if(fileExists(directoryName + File.separator + "config.lm")) {
-            config = readFile(directoryName + File.separator + "config.lm");
+            config.add("started");
+            writeFile(directoryName + File.separator + "config.lm", config);
+        }
 
-            if(!config.contains("dbcreated")) {
-                createDatabase();
-            }
-        }else {
-            createDatabase();
+        config = readFile(directoryName + File.separator + "config.lm");
+
+        //todo DELETE LINE BELOW BEORE RELEASE
+        config.add("activated");
+
+        while(!config.contains("activated")) {
+            activate();
+        }
+
+        if(!config.contains("dbcreated")) {
+            createDB();
 
             config.add("dbcreated");
             writeFile(directoryName + File.separator + "config.lm", config);
         }
 
-        Klijenti klijenti = new Klijenti();
-        klijenti.show();
+        if(config.contains("started") && config.contains("activated") && config.contains("dbcreated")) {
+            Klijenti klijenti = new Klijenti();
+            klijenti.show();
+        }else {
+            JOptionPane.showMessageDialog(null, "Program se ne moze pokrenuti", "Greska", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    public static void createDatabase() {
+    public static void createDB() {
         try {
             Class.forName(DRIVER);
 
-            Connection c = DriverManager.getConnection(URL);
+            Connection c = DriverManager.getConnection(CREATE_URL);
             Statement s = c.createStatement();
-            s.execute("CREATE TABLE klijenti(ime varchar(50), broj varchar(50))");
-        }catch(ClassNotFoundException e) {
+            //todo create klijenti, predmeti and tok tables
+            //s.execute("CREATE TABLE klijenti(ime varchar(50), broj varchar(50), email varchar(100))");
+        }catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }catch(SQLException e) {
+        }
+    }
+
+    public static void executeDB(String cmd) {
+        try {
+            Class.forName(DRIVER);
+
+            Connection c = DriverManager.getConnection(EXECUTE_URL);
+            Statement s = c.createStatement();
+            s.execute(cmd);
+        }catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -59,7 +83,7 @@ public class Main {
                 boolean created = file.mkdir();
 
                 if(!created) {
-                    JOptionPane.showMessageDialog(null, "Directory could not be created", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, name.toUpperCase() + " direktorijum ne moze biti kreiran", "Greska", JOptionPane.ERROR_MESSAGE);
                 }
             }catch(Exception e) {
                 e.printStackTrace();
@@ -112,5 +136,9 @@ public class Main {
         }else {
             return false;
         }
+    }
+
+    public static void activate() {
+        //todo activation process
     }
 }
