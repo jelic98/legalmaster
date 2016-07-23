@@ -100,28 +100,27 @@ public class Main {
     }
 
     public static void showSplashScreen() {
-        Image img = new ImageIcon(Main.class.getResource("/justicia.png")).getImage();
+        ImageIcon img = new ImageIcon(Main.class.getResource("/justicia.png"));
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = 500;
-        int height = 500;
+        int width = 250;
+        int height = 250;
 
         JWindow window = new JWindow();
 
-        window.getContentPane().add(new JLabel(new ImageIcon(img)));
+        window.getContentPane().add(new JLabel(img));
         window.getContentPane().setBackground(Color.decode("#ecf0f1"));
         window.getContentPane().setLayout(new GridBagLayout());
         window.setSize(new Dimension(width, height));
         window.setLocation(screenSize.width / 2 - width / 2, screenSize.height / 2 - height / 2);
 
-        //todo UNCOMMENT SNIPPET BELOW BEFORE RELEASE
-//        window.setVisible(true);
-//
-//        try {
-//            Thread.sleep(2500);
-//        }catch(InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        window.setVisible(true);
+
+        try {
+            Thread.sleep(3000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
 
         window.setVisible(false);
         window.dispose();
