@@ -176,8 +176,7 @@ public class Predmeti {
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        //todo insert row in predmet db table
-        //Main.executeDB("INSERT INTO predmeti..." + id);
+        //todo Main.executeDB("INSERT INTO predmeti (id, sifra, broj, ) VALUES (" +  + ")");
         row[0] = id;
         model.addRow(row);
         table.setModel(model);

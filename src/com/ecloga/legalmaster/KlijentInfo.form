@@ -37,7 +37,7 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Ime i prezime"/>
+          <text value="*Ime i prezime"/>
         </properties>
       </component>
       <component id="81d55" class="javax.swing.JTextField" binding="tfIme">

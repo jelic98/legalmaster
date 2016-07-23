@@ -16,16 +16,21 @@ public class Klijenti {
     private JPanel panel, tablePanel, menuPanel;
     private static DefaultTableModel model;
     private static JTable table;
+    private JLabel lEcloga;
     private JScrollPane scrollPane;
     private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar;
     private static ArrayList<String> klijenti = new ArrayList<String>();
     private static int maxID = 0;
     public static boolean infoShown = false;
+    public static boolean kalendarShown = false;
 
     public Klijenti() {
         panel = new JPanel();
         tablePanel = new JPanel();
         menuPanel = new JPanel();
+
+        lEcloga = new JLabel("Copyright © Ecloga Apps");
+        lEcloga.setForeground(Color.GRAY);
 
         model = new DefaultTableModel();
 
@@ -37,11 +42,11 @@ public class Klijenti {
 
         String[] columns = {"ID", "Ime i prezime", "Broj telefona", "Email", "Adresa"};
 
-        for(String value : columns) {
-            model.addColumn(value);
+        for(int i = 0; i < 50; i++) {
+            model.addRow(new Object[] {i, i, i, i, i});
         }
 
-        table.setPreferredScrollableViewportSize(new Dimension(width, height));
+        table.setPreferredScrollableViewportSize(new Dimension(width, (int) (height * 0.8)));
         table.setFillsViewportHeight(true);
         table.getTableHeader().setReorderingAllowed(false);
 
@@ -87,9 +92,10 @@ public class Klijenti {
                     String id = String.valueOf(table.getValueAt(selectedIndex, 0));
 
                     Main.executeDB("DELETE FROM klijenti WHERE id=" + id);
+                    Main.executeDB("DELETE FROM predmeti WHERE klijent=" + id);
                     model.removeRow(selectedIndex);
                     klijenti.remove(id);
-                    //todo delete klijent from db, delete all predmeti of klijent from db and directory
+                    //todo delete klijent, delete all predmeti of klijent from db and directory
                 }else {
                     JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -145,6 +151,10 @@ public class Klijenti {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //todo launch kalendar window
+                Kalendar kalendar = new Kalendar();
+                kalendar.show();
+
+                kalendarShown = true;
             }
         });
     }
@@ -184,6 +194,7 @@ public class Klijenti {
 
         panel.add(menuPanel);
         panel.add(tablePanel);
+        panel.add(lEcloga);
 
         JFrame frame = new JFrame();
         frame.setTitle("LegalMaster");

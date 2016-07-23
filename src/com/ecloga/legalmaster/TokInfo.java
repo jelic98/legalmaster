@@ -18,7 +18,6 @@ public class TokInfo {
     private JButton bSacuvaj;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
-    public boolean infoShown = false;
 
     public TokInfo(Tok tok) {
         nazivForme = "Dodaj fazu";

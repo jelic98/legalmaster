@@ -1,12 +1,8 @@
 package com.ecloga.legalmaster;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -27,46 +23,23 @@ public class Main {
         writeDirectory(directoryName + File.separator + "media");
         writeDirectory(directoryName + File.separator + "media" + File.separator + "temp");
 
-        Image img = new ImageIcon(Main.class.getResource("/justicia.png")).getImage();
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = 500;
-        int height = 500;
-
-        JWindow window = new JWindow();
-
-        window.getContentPane().add(new JLabel(new ImageIcon(img)));
-        window.getContentPane().setBackground(Color.decode("#ecf0f1"));
-        window.getContentPane().setLayout(new GridBagLayout());
-        window.setSize(new Dimension(width, height));
-        window.setLocation(screenSize.width / 2 - width / 2, screenSize.height / 2 - height / 2);
-
-        //todo UNCOMMEN SNIPPIET LINE BELOW BEORE RELEASE
-        //window.setVisible(true);
-
-//        try {
-//            Thread.sleep(2500);
-//        }catch(InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        window.setVisible(false);
-        window.dispose();
+        showSplashScreen();
 
         if(fileExists(directoryName + File.separator + "config.lm")) {
+            config = readFile(directoryName + File.separator + "config.lm");
+        }else {
             config.add("started");
             writeFile(directoryName + File.separator + "config.lm", config);
         }
 
-        config = readFile(directoryName + File.separator + "config.lm");
-
-        //todo DELETE LINE BELOW BEORE RELEASE
-        config.add("activated");
-
-        while(!config.contains("activated")) {
+        if(!config.contains("activated")) {
             activate();
+        }else {
+            startUp();
         }
+    }
 
+    public static void startUp() {
         if(!config.contains("dbcreated")) {
             createDB();
 
@@ -88,8 +61,9 @@ public class Main {
 
             Connection c = DriverManager.getConnection(CREATE_URL);
             Statement s = c.createStatement();
-            //todo create klijenti, predmeti and tok tables
-            //s.execute("CREATE TABLE klijenti(ime varchar(50), broj varchar(50), email varchar(100))");
+            s.execute("CREATE TABLE klijenti(id VARCHAR(11), ime VARCHAR(50), broj VARCHAR(25), email VARCHAR(50), adresa VARCHAR(100))");
+            s.execute("CREATE TABLE predmeti(id VARCHAR(11), sifra VARCHAR(25), ime VARCHAR(100), cena VARCHAR(11), placeno VARCHAR(11), klijent VARCHAR(11))");
+            s.execute("CREATE TABLE tok(id VARCHAR(11), ime VARCHAR(100), datum VARCHAR(10), vreme VARCHAR(10))");
         }catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -105,6 +79,34 @@ public class Main {
         }catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void showSplashScreen() {
+        Image img = new ImageIcon(Main.class.getResource("/justicia.png")).getImage();
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = 500;
+        int height = 500;
+
+        JWindow window = new JWindow();
+
+        window.getContentPane().add(new JLabel(new ImageIcon(img)));
+        window.getContentPane().setBackground(Color.decode("#ecf0f1"));
+        window.getContentPane().setLayout(new GridBagLayout());
+        window.setSize(new Dimension(width, height));
+        window.setLocation(screenSize.width / 2 - width / 2, screenSize.height / 2 - height / 2);
+
+        //todo UNCOMMENT SNIPPET BELOW BEFORE RELEASE
+        //window.setVisible(true);
+
+//        try {
+//            Thread.sleep(2500);
+//        }catch(InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        window.setVisible(false);
+        window.dispose();
     }
 
     public static void writeDirectory(String name) {
@@ -170,6 +172,7 @@ public class Main {
     }
 
     public static void activate() {
-        //todo activation process
+        Aktivacija aktivacija = new Aktivacija();
+        aktivacija.show();
     }
 }
