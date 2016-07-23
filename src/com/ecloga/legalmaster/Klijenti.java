@@ -51,6 +51,7 @@ public class Klijenti {
         table.setPreferredScrollableViewportSize(new Dimension(width, (int) (height * 0.8)));
         table.setFillsViewportHeight(true);
         table.getTableHeader().setReorderingAllowed(false);
+        table.getTableHeader().setResizingAllowed(true);
 
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
@@ -58,7 +59,7 @@ public class Klijenti {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
                 if(!isSelected) {
-                    c.setBackground(row % 2 == 0 ? Color.LIGHT_GRAY : Color.WHITE);
+                    c.setBackground(row % 2 == 0 ? Color.decode("#ecf0f1") : Color.WHITE);
                 }
 
                 return c;

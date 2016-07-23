@@ -115,8 +115,8 @@ public class Main {
         window.setLocation(screenSize.width / 2 - width / 2, screenSize.height / 2 - height / 2);
 
         //todo UNCOMMENT SNIPPET BELOW BEFORE RELEASE
-        //window.setVisible(true);
-
+//        window.setVisible(true);
+//
 //        try {
 //            Thread.sleep(2500);
 //        }catch(InterruptedException e) {
