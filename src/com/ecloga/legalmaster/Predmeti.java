@@ -47,7 +47,7 @@ public class Predmeti {
             }
         };
 
-        String[] columns = {"ID", "Sifra", "Ime", "Cena", "Placeno"};
+        String[] columns = {"ID", "Sifra", "Ime"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -181,7 +181,7 @@ public class Predmeti {
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', '" + row[4] + "', "+ getId() + ")");
+        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + "', "+ getId() + ")");
         addRow(row);
     }
 
@@ -193,7 +193,7 @@ public class Predmeti {
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', cena='" + row[3] + "', placeno='" + row[4] + "' WHERE id=" + id);
+        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "' WHERE id=" + id);
         refresh();
     }
 
@@ -212,7 +212,7 @@ public class Predmeti {
 
             while(rs.next()){
                 if(rs.getInt("klijent") == klijentId) {
-                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("cena"), rs.getString("placeno")});
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime")});
                 }
 
                 if(rs.getInt("id") > maxID) {

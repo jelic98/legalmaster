@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ecloga.legalmaster.PredmetInfo">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ecloga.legalmaster.CenovnikInfo">
   <grid id="27dc6" binding="panel" layout-manager="FormLayout">
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="top:3dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="top:3dlu:noGrow"/>
     <rowspec value="center:d:noGrow"/>
     <rowspec value="top:3dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
@@ -29,27 +25,16 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="43dc8" class="javax.swing.JLabel">
+      <component id="403af" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Ime"/>
+          <text value="*Radnja"/>
         </properties>
       </component>
-      <component id="415fc" class="javax.swing.JTextField" binding="tfIme">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <forms defaultalign-horz="false"/>
-        </constraints>
-        <properties>
-          <columns value="20"/>
-        </properties>
-      </component>
-      <component id="5c3d0" class="javax.swing.JTextField" binding="tfSifra">
+      <component id="5f989" class="javax.swing.JTextField" binding="tfRadnja">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -60,40 +45,53 @@
           <columns value="20"/>
         </properties>
       </component>
-      <component id="84631" class="javax.swing.JLabel">
+      <component id="9207c" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="*Sifra"/>
+          <text value="*Cena"/>
         </properties>
       </component>
-      <component id="82e6" class="javax.swing.JLabel">
+      <component id="a002a" class="javax.swing.JTextField" binding="tfCena">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <columns value="20"/>
+        </properties>
+      </component>
+      <component id="11845" class="javax.swing.JLabel">
         <constraints>
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Medija"/>
+          <text value="Placeno"/>
         </properties>
       </component>
-      <component id="e36c3" class="javax.swing.JButton" binding="bOtvori">
+      <component id="6f024" class="javax.swing.JTextField" binding="tfPlaceno">
         <constraints>
-          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms top="0" left="120" bottom="0" right="120"/>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Otvori"/>
+          <columns value="20"/>
         </properties>
       </component>
-      <component id="dd39" class="javax.swing.JButton" binding="bSacuvaj">
+      <component id="f9317" class="javax.swing.JButton" binding="bSacuvaj">
         <constraints>
           <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Sacuvaj"/>
+          <text value="Button"/>
         </properties>
       </component>
     </children>

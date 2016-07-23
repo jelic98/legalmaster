@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Tok {
+public class Cenovnik {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int width = (int) (screenSize.getWidth() * 0.5);
     private int height = (int) (screenSize.getHeight() * 0.25);
@@ -20,13 +20,13 @@ public class Tok {
     private JTable table;
     private JScrollPane scrollPane;
     private JButton bDodaj, bUkloni, bIzmeni;
-    private ArrayList<String> tok = new ArrayList<String>();
+    private ArrayList<String> cenovnik = new ArrayList<String>();
     private String predmetSifra;
     private int maxID = 0;
     public boolean infoShown = false;
     private int predmetId;
 
-    public Tok(String predmetSifra) {
+    public Cenovnik(String predmetSifra) {
         this.predmetSifra = predmetSifra;
 
         panel = new JPanel();
@@ -41,7 +41,7 @@ public class Tok {
             }
         };
 
-        String[] columns = {"ID", "Ime", "Datum", "Vreme"};
+        String[] columns = {"ID", "Radnja", "Cena", "Placeno"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -58,7 +58,7 @@ public class Tok {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
                 if(!isSelected) {
-                    c.setBackground(row % 2 == 0 ? Color.decode("#ecf0f1") : Color.WHITE);
+                    c.setBackground((table.getColumnName(column).equals("Cena") && table.getValueAt(column, row).equals(table.getValueAt(column + 1, row))) ? Color.GREEN : Color.RED);
                 }
 
                 return c;
@@ -74,7 +74,7 @@ public class Tok {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!infoShown){
-                    TokInfo dodaj = new TokInfo(Tok.this);
+                    CenovnikInfo dodaj = new CenovnikInfo(Cenovnik.this);
                     dodaj.show();
                 }else {
                     JOptionPane.showMessageDialog(null, "Prozor je aktivan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
@@ -91,12 +91,12 @@ public class Tok {
                 if(selectedIndex != -1) {
                     String id = String.valueOf(table.getValueAt(selectedIndex, 0));
 
-                    Main.executeDB("DELETE FROM tok WHERE id=" + id);
+                    Main.executeDB("DELETE FROM cenovnik WHERE id=" + id);
 
                     model.removeRow(selectedIndex);
-                    tok.remove(id);
+                    cenovnik.remove(id);
                 }else {
-                    JOptionPane.showMessageDialog(null, "Faza nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Radnja nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -115,10 +115,10 @@ public class Tok {
                             info.put(i, String.valueOf(table.getValueAt(selectedIndex, i)));
                         }
 
-                        TokInfo izmeni = new TokInfo(Tok.this, info);
+                        CenovnikInfo izmeni = new CenovnikInfo(Cenovnik.this, info);
                         izmeni.show();
                     }else {
-                        JOptionPane.showMessageDialog(null, "Faza nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Radnja nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }else {
                     JOptionPane.showMessageDialog(null, "Prozor je aktivan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
@@ -131,19 +131,19 @@ public class Tok {
         maxID++;
         String id = String.valueOf(maxID);
         row[0] = id;
-        Main.executeDB("INSERT INTO tok VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', " + getId() + ")");
+        Main.executeDB("INSERT INTO cenovnik VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', " + getId() + ")");
         addRow(row);
     }
 
     private void addRow(Object[] row) {
         model.addRow(row);
         table.setModel(model);
-        tok.add(String.valueOf(row[0]));
+        cenovnik.add(String.valueOf(row[0]));
     }
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        Main.executeDB("UPDATE tok SET ime='" + row[1] + "', datum='" + row[2] + "', vreme='" + row[3] + "' WHERE id=" + id);
+        Main.executeDB("UPDATE cenovnik SET radnja='" + row[1] + "', cena='" + row[2] + "', placeno='" + row[3] + "' WHERE id=" + id);
         refresh();
     }
 
@@ -153,7 +153,7 @@ public class Tok {
 
         ResultSet rs = null;
 
-        String cmd = "SELECT * FROM tok";
+        String cmd = "SELECT * FROM cenovnik";
 
         predmetId = getId();
 
@@ -162,7 +162,7 @@ public class Tok {
 
             while(rs.next()){
                 if(rs.getInt("predmet") == predmetId) {
-                    addRow(new Object[] {rs.getInt("id"), rs.getString("ime"), rs.getString("datum"), rs.getString("vreme")});
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("radnja"), rs.getString("cena"), rs.getString("placeno")});
                 }
 
                 if(rs.getInt("id") > maxID) {
@@ -209,7 +209,7 @@ public class Tok {
         panel.add(tablePanel);
 
         JFrame frame = new JFrame();
-        frame.setTitle(predmetSifra + " - Tok predmeta");
+        frame.setTitle(predmetSifra + " - Cenovnik predmeta");
         frame.setSize(new Dimension(width, height));
         frame.setLocation(screenSize.width / 2 - width / 2,screenSize.height / 2 - height / 2);
         frame.setContentPane(panel);

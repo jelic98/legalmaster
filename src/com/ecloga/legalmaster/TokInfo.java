@@ -18,6 +18,7 @@ public class TokInfo {
     private JButton bSacuvaj;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
+    public boolean infoShown = false;
 
     public TokInfo(Tok tok) {
         nazivForme = "Dodaj fazu";
@@ -88,7 +89,7 @@ public class TokInfo {
                         i++;
                     }
 
-                    tok.update(obj);
+                    tok.add(obj);
 
                     tok.infoShown = false;
 

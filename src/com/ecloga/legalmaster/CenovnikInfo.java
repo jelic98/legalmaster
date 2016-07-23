@@ -6,36 +6,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
-public class PredmetInfo {
+public class CenovnikInfo {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int width = (int) (screenSize.getWidth() * 0.25);
     private int height = (int) (screenSize.getHeight() * 0.5);
     private JFrame frame = new JFrame();
     private JPanel panel;
-    private JTextField tfIme, tfSifra;
+    private JTextField tfRadnja, tfPlaceno, tfCena;
     private JButton bSacuvaj;
-    private JButton bOtvori;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
+    public boolean infoShown = false;
 
-    public PredmetInfo(Predmeti predmet) {
-        nazivForme = "Dodaj predmet";
+    public CenovnikInfo(Cenovnik cenovnik) {
+        nazivForme = "Dodaj radnju";
 
-        tfIme.setText("");
+        tfPlaceno.setText("");
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tfSifra.getText().isEmpty() || tfSifra.getText() == null) {
-                    JOptionPane.showMessageDialog(null, "Sifra predmeta je neophodna", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                if(tfRadnja.getText().isEmpty() || tfRadnja.getText() == null
+                        || tfCena.getText().isEmpty() || tfCena.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Radnja i cena su neophodne", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
                     info.put(0, "0");
-                    info.put(1, tfSifra.getText());
-                    info.put(2, tfIme.getText());
+                    info.put(1, tfRadnja.getText());
+                    info.put(2, tfCena.getText());
+                    info.put(3, tfPlaceno.getText());
 
                     Object[] obj = new Object[info.size() + 1];
                     int i = 0;
@@ -47,42 +47,38 @@ public class PredmetInfo {
                         i++;
                     }
 
-                    predmet.add(obj);
+                    cenovnik.add(obj);
 
-                    predmet.infoShown = false;
+                    cenovnik.infoShown = false;
 
                     frame.dispose();
                 }
             }
         });
-
-        bOtvori.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                openMedia(Main.directoryName + File.separator + "media" + File.separator + "temp");
-            }
-        });
     }
 
-    public PredmetInfo(Predmeti predmet, HashMap<Integer, String> info) {
+    public CenovnikInfo(Cenovnik cenovnik, HashMap<Integer, String> info) {
         this.info = info;
 
-        nazivForme = info.get(2) + " - Izmena";
+        nazivForme = "Izmeni radnju";
 
         id = info.get(0);
 
-        tfSifra.setText(info.get(1));
-        tfIme.setText(info.get(2));
+        tfRadnja.setText(info.get(1));
+        tfCena.setText(info.get(2));
+        tfPlaceno.setText(info.get(3));
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tfSifra.getText().isEmpty() || tfSifra.getText() == null) {
-                    JOptionPane.showMessageDialog(null, "Sifra predmeta je neophodna", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                if(tfRadnja.getText().isEmpty() || tfRadnja.getText() == null
+                        || tfCena.getText().isEmpty() || tfCena.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Radnja i cena su neophodne", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
                     info.put(0, id);
-                    info.put(1, tfSifra.getText());
-                    info.put(2, tfIme.getText());
+                    info.put(1, tfRadnja.getText());
+                    info.put(2, tfCena.getText());
+                    info.put(3, tfPlaceno.getText());
 
                     Object[] obj = new Object[info.size() + 1];
                     int i = 0;
@@ -94,29 +90,14 @@ public class PredmetInfo {
                         i++;
                     }
 
-                    predmet.update(obj);
+                    cenovnik.add(obj);
 
-                    predmet.infoShown = false;
+                    cenovnik.infoShown = false;
 
                     frame.dispose();
                 }
             }
         });
-
-        bOtvori.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                openMedia(Main.directoryName + File.separator + "media" + File.separator + id);
-            }
-        });
-    }
-
-    private void openMedia(String dir) {
-        try {
-            Desktop.getDesktop().open(new File(dir));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void show() {
