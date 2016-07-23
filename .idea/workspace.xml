@@ -7,64 +7,98 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3f2b9d6-a680-4759-be3c-c1a0622de8b0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/legalmaster/seg0/c480.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/legalmaster/seg0/c490.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/db.lck" afterPath="$PROJECT_DIR$/legalmaster/db.lck" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/log/log.ctrl" afterPath="$PROJECT_DIR$/legalmaster/log/log.ctrl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/log/log1.dat" afterPath="$PROJECT_DIR$/legalmaster/log/log1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/log/logmirror.ctrl" afterPath="$PROJECT_DIR$/legalmaster/log/logmirror.ctrl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c10.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c10.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c180.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c180.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1a1.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c1a1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1b1.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c1b1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c20.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c20.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c230.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c230.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c241.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c241.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c31.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c31.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c380.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c380.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c391.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c391.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3a1.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c3a1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3b1.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c3b1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c41.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c41.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c470.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c470.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c51.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c51.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c60.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c60.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c71.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c71.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c81.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c81.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/c90.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/c90.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/ca1.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/ca1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/seg0/cb1.dat" afterPath="$PROJECT_DIR$/legalmaster/seg0/cb1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/KlijentInfo.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/KlijentInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$1.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$2.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$3.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$4.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$5.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$6.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$7.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$7.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/db.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/dbex.lck" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/log/log.ctrl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/log/log1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/log/logmirror.ctrl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c10.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c101.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c111.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c121.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c130.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c141.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c150.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c161.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c171.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c180.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c191.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1a1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1b1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1c0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1d1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1e0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c1f1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c20.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c200.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c211.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c221.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c230.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c241.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c251.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c260.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c271.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c281.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c290.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c2a1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c2b1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c2c1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c2d0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c2e1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c2f0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c300.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c31.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c311.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c321.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c331.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c340.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c351.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c361.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c371.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c380.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c391.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3a1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3b1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3c0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3d1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3e1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c3f1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c400.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c41.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c411.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c421.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c430.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c441.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c451.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c461.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c470.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c480.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c490.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c51.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c60.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c71.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c81.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/c90.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/ca1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/cb1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/cc0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/cd1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/ce1.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/cf0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/seg0/d4a0.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/legalmaster/service.properties" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Aktivacija$1.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Aktivacija$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Aktivacija.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Aktivacija.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Main.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/PredmetInfo.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/PredmetInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Predmeti.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Predmeti.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo$1.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo$2.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo$3.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/TokInfo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/derby.log" afterPath="$PROJECT_DIR$/derby.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/service.properties" afterPath="$PROJECT_DIR$/legalmaster/service.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.form" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Main.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.form" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.form" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.java" />
     </list>
     <ignored path="LegalMaster.iws" />
@@ -89,89 +123,24 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
+            <state relative-caret-position="343">
+              <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Aktivacija.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Aktivacija.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Kalendar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="73" selection-start-line="23" selection-start-column="73" selection-end-line="23" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#893#1103#0" expanded="true" />
-                <element signature="e#1102#1103#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Kalendar.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Klijenti.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="63" selection-start-line="12" selection-start-column="2" selection-end-line="14" selection-end-column="63" />
+            <state relative-caret-position="178">
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1851#2363#0" expanded="true" />
-                <element signature="e#2362#2363#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KlijentInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#602#619#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tok.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1888#2400#0" expanded="true" />
+                <element signature="e#2399#2400#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -180,8 +149,20 @@
       <file leaf-file-name="Predmeti.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="189" column="18" selection-start-line="189" selection-start-column="18" selection-end-line="189" selection-end-column="18" />
+            <state relative-caret-position="133">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tok.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,8 +173,8 @@
       <file leaf-file-name="PredmetInfo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="35" column="130" selection-start-line="35" selection-start-column="130" selection-end-line="35" selection-end-column="130" />
+            <state relative-caret-position="208">
+              <caret line="116" column="38" selection-start-line="116" selection-start-column="36" selection-end-line="116" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -228,23 +209,23 @@
         <option value="$PROJECT_DIR$/derby.log" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.form" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.form" />
-        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java" />
-        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.java" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.form" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.form" />
-        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.java" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.form" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Activation.form" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Activacija.form" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Activacija.java" />
-        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.form" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.java" />
-        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.form" />
-        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Main.java" />
         <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java" />
+        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java" />
+        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.java" />
+        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java" />
+        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" />
+        <option value="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java" />
       </list>
     </option>
   </component>
@@ -923,8 +904,8 @@
           <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1851#2363#0" expanded="true" />
-            <element signature="e#2362#2363#0" expanded="true" />
+            <element signature="e#1888#2400#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -977,8 +958,8 @@
           <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1851#2363#0" expanded="true" />
-            <element signature="e#2362#2363#0" expanded="true" />
+            <element signature="e#1888#2400#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1083,11 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1098,17 +1074,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/legalmaster/service.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1117,50 +1082,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="189" column="18" selection-start-line="189" selection-start-column="18" selection-end-line="189" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="35" column="130" selection-start-line="35" selection-start-column="130" selection-end-line="35" selection-end-column="130" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="115" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#709#726#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/KlijentInfo.java">
@@ -1182,14 +1106,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="63" selection-start-line="12" selection-start-column="2" selection-end-line="14" selection-end-column="63" />
+        <state relative-caret-position="242">
+          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1851#2363#0" expanded="true" />
-            <element signature="e#2362#2363#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1206,25 +1133,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
+        <state relative-caret-position="343">
+          <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Aktivacija.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
+        <state relative-caret-position="178">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1888#2400#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/TokInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="90" column="22" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#709#726#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Predmeti.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/PredmetInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="116" column="38" selection-start-line="116" selection-start-column="36" selection-end-line="116" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

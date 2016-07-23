@@ -1,10 +1,15 @@
 package com.ecloga.legalmaster;
 
+import org.apache.commons.io.IOUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.*;
 
 
 public class Aktivacija {
@@ -21,27 +26,53 @@ public class Aktivacija {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!tfKod.getText().isEmpty() && tfKod.getText() != null) {
-                    if(activate(tfKod.getText()).equals("true")) {
-                        frame.dispose();
-                        Main.config.add("activated");
-                        Main.writeFile(Main.directoryName + File.separator + "config.lm", Main.config);
+                    if(hasInternetAccess("google.com")) {
+                        if(activate(tfKod.getText()).equals("true")) {
+                            frame.dispose();
 
-                        JOptionPane.showMessageDialog(null, "Program je uspesno aktiviran", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Program je uspesno aktiviran", "Poruka", JOptionPane.INFORMATION_MESSAGE);
 
-                        Main.startUp();
+                            Main.config.add("activated");
+                            Main.writeFile(Main.directoryName + File.separator + "config.lm", Main.config);
+                            Main.startUp();
+                        }else {
+                            JOptionPane.showMessageDialog(null, "Aktivacija programa nije uspela", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }else {
-                        JOptionPane.showMessageDialog(null, "Aktivacija programa nije uspela", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Aktivacija zahteva pristup internetu", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
         });
     }
 
+    public static boolean hasInternetAccess(String site) {
+        Socket sock = new Socket();
+        InetSocketAddress addr = new InetSocketAddress(site, 80);
+
+        try {
+            sock.connect(addr,3000);
+            sock.close();
+            return true;
+        }catch(IOException e) {
+            return false;
+        }
+    }
+
     public String activate(String kod) {
-        String url = "http://www.ecloga.org/legal/activate.php?kod=" + kod;
+        URL url = null;
         String response = "false";
 
-        //todo make request and get response to url
+        try {
+            url = new URL("http://www.ecloga.org/legal/activate.php?kod=" + kod);
+            URLConnection con = url.openConnection();
+            InputStream in = con.getInputStream();
+            String encoding = con.getContentEncoding();
+            encoding = encoding == null ? "UTF-8" : encoding;
+            response = IOUtils.toString(in, encoding);
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
 
         return response;
     }

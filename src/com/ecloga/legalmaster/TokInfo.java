@@ -88,7 +88,7 @@ public class TokInfo {
                         i++;
                     }
 
-                    tok.add(obj);
+                    tok.update(obj);
 
                     tok.infoShown = false;
 

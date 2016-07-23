@@ -9,10 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,6 +30,7 @@ public class Predmeti {
     private String klijentIme;
     private int maxID = 0;
     public boolean infoShown = false;
+    private int klijentId;
 
     public Predmeti(String klijentIme) {
         this.klijentIme = klijentIme;
@@ -68,7 +70,7 @@ public class Predmeti {
             }
         });
 
-        //todo populate predmeti arraylsit with values from db
+        refresh();
 
         scrollPane = new JScrollPane(table);
 
@@ -95,8 +97,8 @@ public class Predmeti {
                     if(selectedIndex != -1) {
                         String id = String.valueOf(table.getValueAt(selectedIndex, 0));
 
-                        //todo delete all tok of predmet from db
                         Main.executeDB("DELETE FROM predmeti WHERE id=" + id);
+                        Main.executeDB("DELETE FROM tok WHERE predmet=" + id);
 
                         model.removeRow(selectedIndex);
                         predmeti.remove(id);
@@ -160,6 +162,8 @@ public class Predmeti {
     public void add(Object[] row) {
         maxID++;
         String id = String.valueOf(maxID);
+        row[0] = id;
+
         File srcDir = new File(Main.directoryName + File.separator + "media" + File.separator + "temp");
         String destName = Main.directoryName + File.separator + "media" + File.separator + id;
         File destDir = new File(destName);
@@ -176,24 +180,71 @@ public class Predmeti {
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        //todo Main.executeDB("INSERT INTO predmeti (id, sifra, broj, ) VALUES (" +  + ")");
-        row[0] = id;
+        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', '" + row[4] + "', "+ getId() + ")");
+        addRow(row);
+    }
+
+    private void addRow(Object[] row) {
         model.addRow(row);
         table.setModel(model);
-        predmeti.add(id);
+        predmeti.add(String.valueOf(row[0]));
     }
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        //todo update row in klijenti db table
-        //Main.executeDB(UPDATE klijenti SET... WHERE id=" + id);
+        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', cena='" + row[3] + "', placeno='" + row[4] + "' WHERE id=" + id);
         refresh();
     }
 
-    public void refresh() {
-        //todo get rows from klijenti table in db and populate table
-        //todo get maxID
-        //todo popualte klijenti arraylist
+    private void refresh() {
+        model.setRowCount(0);
+        table.setModel(model);
+
+        ResultSet rs = null;
+
+        String cmd = "SELECT * FROM predmeti";
+
+        klijentId = getId();
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                if(rs.getInt("klijent") == klijentId) {
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("cena"), rs.getString("placeno")});
+                }
+
+                if(rs.getInt("id") > maxID) {
+                    maxID = rs.getInt("id");
+                }
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getId() {
+        ResultSet rs = null;
+
+        String cmd = "SELECT * FROM klijenti WHERE ime='" + klijentIme + "'";
+
+        int klijentId = 0;
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                klijentId = rs.getInt("id");
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return klijentId;
     }
 
     public void show() {

@@ -36,8 +36,8 @@ public class PredmetInfo {
                     JOptionPane.showMessageDialog(null, "Sifra predmeta je neophodna", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
                     info.put(0, "0");
-                    info.put(1, tfIme.getText());
-                    info.put(2, tfSifra.getText());
+                    info.put(1, tfSifra.getText());
+                    info.put(2, tfIme.getText());
                     info.put(3, tfCena.getText());
                     info.put(4, tfPlaceno.getText());
 
@@ -75,8 +75,8 @@ public class PredmetInfo {
 
         id = info.get(0);
 
-        tfIme.setText(info.get(1));
-        tfSifra.setText(info.get(2));
+        tfSifra.setText(info.get(1));
+        tfIme.setText(info.get(2));
         tfCena.setText(info.get(3));
         tfPlaceno.setText(info.get(4));
 
@@ -87,8 +87,8 @@ public class PredmetInfo {
                     JOptionPane.showMessageDialog(null, "Sifra predmeta je neophodna", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
                     info.put(0, id);
-                    info.put(1, tfIme.getText());
-                    info.put(2, tfSifra.getText());
+                    info.put(1, tfSifra.getText());
+                    info.put(2, tfIme.getText());
                     info.put(3, tfCena.getText());
                     info.put(4, tfPlaceno.getText());
 

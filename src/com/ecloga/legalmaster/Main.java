@@ -17,6 +17,8 @@ public class Main {
     public static final String CREATE_URL  = "jdbc:derby:legalmaster;create=true";
     public static final String EXECUTE_URL  = "jdbc:derby:legalmaster";
     public static ArrayList<String> config = new ArrayList<String>();
+    public static Connection c;
+    public static Statement s;
 
     public static void main(String[] args) {
         writeDirectory(directoryName);
@@ -47,6 +49,8 @@ public class Main {
             writeFile(directoryName + File.separator + "config.lm", config);
         }
 
+        createStatement(EXECUTE_URL);
+
         if(config.contains("started") && config.contains("activated") && config.contains("dbcreated")) {
             Klijenti klijenti = new Klijenti();
             klijenti.show();
@@ -55,15 +59,29 @@ public class Main {
         }
     }
 
+    public static void createStatement(String url) {
+        try {
+            c = DriverManager.getConnection(CREATE_URL);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            s = c.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void createDB() {
         try {
             Class.forName(DRIVER);
 
-            Connection c = DriverManager.getConnection(CREATE_URL);
-            Statement s = c.createStatement();
-            s.execute("CREATE TABLE klijenti(id VARCHAR(11), ime VARCHAR(50), broj VARCHAR(25), email VARCHAR(50), adresa VARCHAR(100))");
-            s.execute("CREATE TABLE predmeti(id VARCHAR(11), sifra VARCHAR(25), ime VARCHAR(100), cena VARCHAR(11), placeno VARCHAR(11), klijent VARCHAR(11))");
-            s.execute("CREATE TABLE tok(id VARCHAR(11), ime VARCHAR(100), datum VARCHAR(10), vreme VARCHAR(10))");
+            createStatement(CREATE_URL);
+
+            s.execute("CREATE TABLE klijenti (id INTEGER not NULL, ime VARCHAR(50), broj VARCHAR(25), email VARCHAR(50), adresa VARCHAR(100), PRIMARY KEY (id))");
+            s.execute("CREATE TABLE predmeti (id INTEGER not NULL, sifra VARCHAR(25), ime VARCHAR(100), cena VARCHAR(10), placeno VARCHAR(10), klijent INTEGER, PRIMARY KEY (id))");
+            s.execute("CREATE TABLE tok (id INTEGER not NULL, ime VARCHAR(100), datum VARCHAR(10), vreme VARCHAR(10), predmet INTEGER, PRIMARY KEY (id))");
         }catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -73,8 +91,8 @@ public class Main {
         try {
             Class.forName(DRIVER);
 
-            Connection c = DriverManager.getConnection(EXECUTE_URL);
-            Statement s = c.createStatement();
+            createStatement(EXECUTE_URL);
+
             s.execute(cmd);
         }catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();

@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,6 +24,7 @@ public class Tok {
     private String predmetSifra;
     private int maxID = 0;
     public boolean infoShown = false;
+    private int predmetId;
 
     public Tok(String predmetSifra) {
         this.predmetSifra = predmetSifra;
@@ -61,7 +64,7 @@ public class Tok {
             }
         });
 
-        //todo populate tok arraylsit with values from db
+        refresh();
 
         scrollPane = new JScrollPane(table);
 
@@ -88,6 +91,7 @@ public class Tok {
                     String id = String.valueOf(table.getValueAt(selectedIndex, 0));
 
                     Main.executeDB("DELETE FROM tok WHERE id=" + id);
+
                     model.removeRow(selectedIndex);
                     tok.remove(id);
                     //todo delete tok from db
@@ -127,24 +131,71 @@ public class Tok {
         maxID++;
         String id = String.valueOf(maxID);
         row[0] = id;
-        //todo insert row in tok db table
-        //Main.executeDB("INSERT INTO tok..." + id);
+        Main.executeDB("INSERT INTO tok VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', " + getId() + ")");
+        addRow(row);
+    }
+
+    private void addRow(Object[] row) {
         model.addRow(row);
         table.setModel(model);
-        tok.add(id);
+        tok.add(String.valueOf(row[0]));
     }
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        //todo update row in klijenti db table
-        //Main.executeDB(UPDATE klijenti SET... WHERE id=" + id);
+        Main.executeDB("UPDATE tok SET ime='" + row[1] + "', datum='" + row[2] + "', vreme='" + row[3] + "' WHERE id=" + id);
         refresh();
     }
 
-    public void refresh() {
-        //todo get rows from klijenti table in db and populate table
-        //todo get maxID
-        //todo popualte klijenti arraylist
+    private void refresh() {
+        model.setRowCount(0);
+        table.setModel(model);
+
+        ResultSet rs = null;
+
+        String cmd = "SELECT * FROM tok";
+
+        predmetId = getId();
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                if(rs.getInt("predmet") == predmetId) {
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("ime"), rs.getString("datum"), rs.getString("vreme")});
+                }
+
+                if(rs.getInt("id") > maxID) {
+                    maxID = rs.getInt("id");
+                }
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getId() {
+        ResultSet rs = null;
+
+        String cmd = "SELECT * FROM predmeti WHERE sifra='" + predmetSifra + "'";
+
+        int predmetId = 0;
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                predmetId = rs.getInt("id");
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return predmetId;
     }
 
     public void show() {

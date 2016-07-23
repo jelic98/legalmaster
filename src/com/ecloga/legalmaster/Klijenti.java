@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -42,8 +44,8 @@ public class Klijenti {
 
         String[] columns = {"ID", "Ime i prezime", "Broj telefona", "Email", "Adresa"};
 
-        for(int i = 0; i < 50; i++) {
-            model.addRow(new Object[] {i, i, i, i, i});
+        for(String value : columns) {
+            model.addColumn(value);
         }
 
         table.setPreferredScrollableViewportSize(new Dimension(width, (int) (height * 0.8)));
@@ -93,9 +95,10 @@ public class Klijenti {
 
                     Main.executeDB("DELETE FROM klijenti WHERE id=" + id);
                     Main.executeDB("DELETE FROM predmeti WHERE klijent=" + id);
+
                     model.removeRow(selectedIndex);
                     klijenti.remove(id);
-                    //todo delete klijent, delete all predmeti of klijent from db and directory
+                    //todo delete all predmeti of klijent from directory
                 }else {
                     JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -150,7 +153,6 @@ public class Klijenti {
         bKalendar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //todo launch kalendar window
                 Kalendar kalendar = new Kalendar();
                 kalendar.show();
 
@@ -163,24 +165,45 @@ public class Klijenti {
         maxID++;
         String id = String.valueOf(maxID);
         row[0] = id;
-        //todo insert row in klijenti db table
-        //Main.executeDB("INSERT INTO klijenti..." + id);
+        Main.executeDB("INSERT INTO klijenti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', '" + row[4] + "')");
+        addRow(row);
+    }
+
+    public static void addRow(Object[] row) {
         model.addRow(row);
         table.setModel(model);
-        klijenti.add(id);
+        klijenti.add(String.valueOf(row[0]));
     }
 
     public static void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        //todo update row in klijenti db table
-        //Main.executeDB(UPDATE klijenti SET... WHERE id=" + id);
+        Main.executeDB("UPDATE klijenti SET ime='" + row[1] + "', broj='" + row[2] + "', email='" + row[3] + "', adresa='" + row[4] + "' WHERE id=" + id);
         refresh();
     }
 
     public static void refresh() {
-        //todo get rows from klijenti table in db and populate table
-        //todo get maxID
-        //todo popualte klijenti arraylist
+        model.setRowCount(0);
+        table.setModel(model);
+
+        String cmd = "SELECT * FROM klijenti";
+
+        ResultSet rs = null;
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                addRow(new Object[] {rs.getInt("id"), rs.getString("ime"), rs.getString("broj"), rs.getString("email"), rs.getString("adresa")});
+
+                if(rs.getInt("id") > maxID) {
+                    maxID = rs.getInt("id");
+                }
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void show() {
