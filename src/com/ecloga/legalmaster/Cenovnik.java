@@ -58,7 +58,11 @@ public class Cenovnik {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
                 if(!isSelected) {
-                    c.setBackground((table.getColumnName(column).equals("Cena") && table.getValueAt(column, row).equals(table.getValueAt(column + 1, row))) ? Color.GREEN : Color.RED);
+                    if(table.getValueAt(row, 2).equals(table.getValueAt(row, 3))) {
+                        c.setBackground(Color.decode("#2ecc71"));
+                    }else {
+                        c.setBackground(Color.decode("#e74c3c"));
+                    }
                 }
 
                 return c;

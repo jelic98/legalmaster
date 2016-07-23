@@ -25,7 +25,7 @@ public class Predmeti {
     private DefaultTableModel model;
     private JTable table;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bTok;
+    private JButton bDodaj, bUkloni, bIzmeni, bTok, bCenovnik;
     private ArrayList<String> predmeti = new ArrayList<String>();
     private String klijentIme;
     private int maxID = 0;
@@ -158,6 +158,23 @@ public class Predmeti {
                 }
             }
         });
+
+        bCenovnik = new JButton("Cenovnik");
+        bCenovnik.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = table.getSelectedRow();
+
+                if(selectedIndex != -1) {
+                    String sifra = String.valueOf(table.getValueAt(selectedIndex, 1));
+
+                    Cenovnik cenovnik = new Cenovnik(sifra);
+                    cenovnik.show();
+                }else {
+                    JOptionPane.showMessageDialog(null, "Predmet nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
     }
 
     public void add(Object[] row) {
@@ -181,7 +198,7 @@ public class Predmeti {
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + "', "+ getId() + ")");
+        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', "+ getId() + ")");
         addRow(row);
     }
 
@@ -253,6 +270,7 @@ public class Predmeti {
         menuPanel.add(bUkloni);
         menuPanel.add(bIzmeni);
         menuPanel.add(bTok);
+        menuPanel.add(bCenovnik);
 
         tablePanel.add(scrollPane);
 

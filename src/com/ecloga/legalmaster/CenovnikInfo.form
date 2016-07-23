@@ -91,7 +91,7 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <text value="Sacuvaj"/>
         </properties>
       </component>
     </children>
