@@ -1,11 +1,15 @@
 package com.ecloga.legalmaster;
 
+import org.apache.commons.io.FileUtils;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -94,12 +98,38 @@ public class Klijenti {
                 if(selectedIndex != -1) {
                     String id = String.valueOf(table.getValueAt(selectedIndex, 0));
 
-                    Main.executeDB("DELETE FROM klijenti WHERE id=" + id);
-                    Main.executeDB("DELETE FROM predmeti WHERE klijent=" + id);
-
                     model.removeRow(selectedIndex);
                     klijenti.remove(id);
-                    //todo delete all predmeti of klijent from directory
+
+                    String cmd = "SELECT * FROM predmeti";
+
+                    ResultSet rs = null;
+
+                    try {
+                        rs = Main.s.executeQuery(cmd);
+
+                        while(rs.next()){
+                            if(String.valueOf(rs.getInt("klijent")).equals(id)) {
+                                File media = new File(Main.directoryName + File.separator + "media" + File.separator + rs.getInt("id"));
+
+                                try {
+                                    FileUtils.deleteDirectory(media);
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+
+                                Main.executeDB("DELETE FROM tok WHERE predmet=" + rs.getInt("id"));
+                                Main.executeDB("DELETE FROM cenovnik WHERE predmet=" + rs.getInt("id"));
+                            }
+                        }
+
+                        rs.close();
+                    }catch(SQLException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    Main.executeDB("DELETE FROM klijenti WHERE id=" + id);
+                    Main.executeDB("DELETE FROM predmeti WHERE klijent=" + id);
                 }else {
                     JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
