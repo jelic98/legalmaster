@@ -109,7 +109,7 @@ public class CenovnikInfo {
                         i++;
                     }
 
-                    cenovnik.add(obj);
+                    cenovnik.update(obj);
 
                     cenovnik.infoShown = false;
 

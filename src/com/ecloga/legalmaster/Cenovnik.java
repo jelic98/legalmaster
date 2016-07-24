@@ -150,6 +150,7 @@ public class Cenovnik {
         row[0] = id;
         Main.executeDB("INSERT INTO cenovnik VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', " + getId() + ")");
         addRow(row);
+        predmeti.refresh();
     }
 
     private void addRow(Object[] row) {
@@ -162,6 +163,7 @@ public class Cenovnik {
         String id = String.valueOf(row[0]);
         Main.executeDB("UPDATE cenovnik SET radnja='" + row[1] + "', cena='" + row[2] + "', placeno='" + row[3] + "' WHERE id=" + id);
         refresh();
+        predmeti.refresh();
     }
 
     private void refresh() {

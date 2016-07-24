@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun Jul 24 19:08:32 CEST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-0156-1de1-2e45-0000067b9740 
+Sun Jul 24 19:12:28 CEST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-0156-1de4-c980-0000067cbf50 
 on database directory /Users/Lazar/IntelliJIDEAProjects/LegalMaster/legalmaster  with class loader sun.misc.Launcher$AppClassLoader@5e2de80c 
 Loaded from file:/Users/Lazar/IntelliJIDEAProjects/LegalMaster/lib/derby.jar
 java.vendor=Oracle Corporation

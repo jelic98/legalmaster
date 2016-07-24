@@ -146,6 +146,7 @@ public class Tok {
         row[0] = id;
         Main.executeDB("INSERT INTO tok VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '" + row[3] + "', " + getId() + ")");
         addRow(row);
+        predmeti.refresh();
     }
 
     private void addRow(Object[] row) {
@@ -158,6 +159,7 @@ public class Tok {
         String id = String.valueOf(row[0]);
         Main.executeDB("UPDATE tok SET ime='" + row[1] + "', datum='" + row[2] + "', vreme='" + row[3] + "' WHERE id=" + id);
         refresh();
+        predmeti.refresh();
     }
 
     public void refresh() {
