@@ -28,9 +28,7 @@ public class Klijenti {
     private static ArrayList<String> klijenti = new ArrayList<String>();
     private static int maxID = 0;
     public static boolean infoShown = false;
-    public static boolean kalendarShown = false;
     public static ArrayList<String> predmetiShown = new ArrayList<String>();
-
     public Klijenti() {
         panel = new JPanel();
         tablePanel = new JPanel();
@@ -74,6 +72,7 @@ public class Klijenti {
         refresh();
 
         scrollPane = new JScrollPane(table);
+
 
         bDodaj = new JButton("Dodaj");
         bDodaj.addActionListener(new ActionListener() {
@@ -191,10 +190,7 @@ public class Klijenti {
         bKalendar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Kalendar kalendar = new Kalendar();
-                kalendar.show();
-
-                kalendarShown = true;
+                Kalendar.pick();
             }
         });
     }

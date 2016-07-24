@@ -15,8 +15,8 @@ import java.util.HashMap;
 
 public class Cenovnik {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private int width = (int) (screenSize.getWidth() * 0.5);
-    private int height = (int) (screenSize.getHeight() * 0.25);
+    private int width = (int) (screenSize.getWidth() * 0.25);
+    private int height = (int) (screenSize.getHeight() * 0.5);
     private JPanel panel, tablePanel, menuPanel;
     private DefaultTableModel model;
     private JTable table;
