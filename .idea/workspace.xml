@@ -6,31 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3f2b9d6-a680-4759-be3c-c1a0622de8b0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/db.lck" afterPath="$PROJECT_DIR$/legalmaster/db.lck" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/log/log.ctrl" afterPath="$PROJECT_DIR$/legalmaster/log/log.ctrl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/log/log1.dat" afterPath="$PROJECT_DIR$/legalmaster/log/log1.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/log/logmirror.ctrl" afterPath="$PROJECT_DIR$/legalmaster/log/logmirror.ctrl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker$1.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker$2.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker$3.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/DatePicker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Kalendar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$7.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Klijenti.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Tok.class" afterPath="$PROJECT_DIR$/out/production/LegalMaster/com/ecloga/legalmaster/Tok.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/derby.log" afterPath="$PROJECT_DIR$/derby.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/DatePicker.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/DatePicker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Kalendar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Tok.java" />
-    </list>
+    <list default="true" id="b3f2b9d6-a680-4759-be3c-c1a0622de8b0" name="Default" comment="" />
     <ignored path="LegalMaster.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -112,8 +88,8 @@
       <file leaf-file-name="DatePicker.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/DatePicker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="140" column="13" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
+            <state relative-caret-position="210">
+              <caret line="139" column="59" selection-start-line="139" selection-start-column="59" selection-end-line="139" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1214,8 +1190,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/DatePicker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="140" column="13" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
+        <state relative-caret-position="210">
+          <caret line="139" column="59" selection-start-line="139" selection-start-column="59" selection-end-line="139" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
