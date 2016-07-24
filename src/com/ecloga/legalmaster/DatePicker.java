@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import javax.swing.*;
 
 public class DatePicker {
@@ -40,7 +39,10 @@ public class DatePicker {
                         }
 
                         if(!day.isEmpty() && button[selection].getForeground() == Color.RED) {
-                            Kalendar.show(day + "-" + l.getText());
+                            Kalendar kalendar = new Kalendar();
+                            kalendar.show(day + "-" + l.getText());
+
+                            d.dispose();
                         }
                     }
                 });
@@ -120,7 +122,7 @@ public class DatePicker {
         for(int x = 6 + dayOfWeek, day = 1; day <= daysInMonth; x++, day++) {
             button[x].setText(String.valueOf(day));
 
-            String sDay = "";
+            String sDay;
 
             if(String.valueOf(day).length() == 1) {
                 sDay = "0" + String.valueOf(day);
@@ -133,6 +135,9 @@ public class DatePicker {
             if(!String.valueOf(day).isEmpty() && checkDay(datum)) {
                 button[x].setForeground(Color.RED);
                 button[x].setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            }else {
+                button[x].setForeground(Color.BLACK);
+                button[x].setBorder(button[0].getBorder());
             }
         }
     }
@@ -159,11 +164,9 @@ public class DatePicker {
         }
 
         if(counter > 0) {
-            System.out.println("***");
             return true;
         }else {
             return false;
         }
-
     }
 }

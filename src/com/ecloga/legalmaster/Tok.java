@@ -46,7 +46,7 @@ public class Tok {
             }
         };
 
-        String[] columns = {"ID", "Ime", "Datum", "Vreme"};
+        String[] columns = {"ID", "Faza", "Datum", "Vreme"};
 
         for(String value : columns) {
             model.addColumn(value);

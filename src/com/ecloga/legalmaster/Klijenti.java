@@ -190,7 +190,8 @@ public class Klijenti {
         bKalendar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Kalendar.pick();
+                Kalendar kalendar = new Kalendar();
+                kalendar.pick();
             }
         });
     }
