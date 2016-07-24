@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,9 +27,12 @@ public class Cenovnik {
     private int maxID = 0;
     public boolean infoShown = false;
     private int predmetId;
+    private JFrame frame = new JFrame();
+    private Predmeti predmeti;
 
-    public Cenovnik(String predmetSifra) {
+    public Cenovnik(Predmeti predmeti, String predmetSifra) {
         this.predmetSifra = predmetSifra;
+        this.predmeti = predmeti;
 
         panel = new JPanel();
         tablePanel = new JPanel();
@@ -129,6 +134,14 @@ public class Cenovnik {
                 }
             }
         });
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                predmeti.cenovnikShown.remove(predmetSifra);
+            }
+        });
     }
 
     public void add(Object[] row) {
@@ -212,7 +225,6 @@ public class Cenovnik {
         panel.add(menuPanel);
         panel.add(tablePanel);
 
-        JFrame frame = new JFrame();
         frame.setTitle(predmetSifra + " - Cenovnik predmeta");
         frame.setSize(new Dimension(width, height));
         frame.setLocation(screenSize.width / 2 - width / 2,screenSize.height / 2 - height / 2);

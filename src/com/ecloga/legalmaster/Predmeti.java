@@ -8,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,6 +33,9 @@ public class Predmeti {
     private int maxID = 0;
     public boolean infoShown = false;
     private int klijentId;
+    private JFrame frame = new JFrame();
+    public ArrayList<String> tokShown = new ArrayList<String>();
+    public ArrayList<String> cenovnikShown = new ArrayList<String>();
 
     public Predmeti(String klijentIme) {
         this.klijentIme = klijentIme;
@@ -151,8 +156,14 @@ public class Predmeti {
                 if(selectedIndex != -1) {
                     String sifra = String.valueOf(table.getValueAt(selectedIndex, 1));
 
-                    Tok tok = new Tok(sifra);
-                    tok.show();
+                    if(!tokShown.contains(sifra)) {
+                        Tok tok = new Tok(Predmeti.this, sifra);
+                        tok.show();
+
+                        tokShown.add(sifra);
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Tok ovog predmeta je prikazan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }else {
                     JOptionPane.showMessageDialog(null, "Predmet nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -168,11 +179,25 @@ public class Predmeti {
                 if(selectedIndex != -1) {
                     String sifra = String.valueOf(table.getValueAt(selectedIndex, 1));
 
-                    Cenovnik cenovnik = new Cenovnik(sifra);
-                    cenovnik.show();
+                    if(!cenovnikShown.contains(sifra)) {
+                        Cenovnik cenovnik = new Cenovnik(Predmeti.this, sifra);
+                        cenovnik.show();
+
+                        cenovnikShown.add(sifra);
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Cenovnik ovog predmeta je prikazan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }else {
                     JOptionPane.showMessageDialog(null, "Predmet nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
+            }
+        });
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                Klijenti.predmetiShown.remove(klijentIme);
             }
         });
     }
@@ -214,7 +239,7 @@ public class Predmeti {
         refresh();
     }
 
-    private void refresh() {
+    public void refresh() {
         model.setRowCount(0);
         table.setModel(model);
 
@@ -301,7 +326,6 @@ public class Predmeti {
         panel.add(menuPanel);
         panel.add(tablePanel);
 
-        JFrame frame = new JFrame();
         frame.setTitle(klijentIme + " - Predmeti");
         frame.setSize(new Dimension(width, height));
         frame.setLocation(screenSize.width / 2 - width / 2,screenSize.height / 2 - height / 2);

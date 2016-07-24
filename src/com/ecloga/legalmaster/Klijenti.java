@@ -29,6 +29,7 @@ public class Klijenti {
     private static int maxID = 0;
     public static boolean infoShown = false;
     public static boolean kalendarShown = false;
+    public static ArrayList<String> predmetiShown = new ArrayList<String>();
 
     public Klijenti() {
         panel = new JPanel();
@@ -172,8 +173,14 @@ public class Klijenti {
                 if(selectedIndex != -1) {
                     String ime = String.valueOf(table.getValueAt(selectedIndex, 1));
 
-                    Predmeti predmeti = new Predmeti(ime);
-                    predmeti.show();
+                    if(!predmetiShown.contains(ime)) {
+                        Predmeti predmeti = new Predmeti(ime);
+                        predmeti.show();
+
+                        predmetiShown.add(ime);
+                    }else {
+                        JOptionPane.showMessageDialog(null, "Predmeti ovog klijenta su prikazani", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }else {
                     JOptionPane.showMessageDialog(null, "Klijent nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }
