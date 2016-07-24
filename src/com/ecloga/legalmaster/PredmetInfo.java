@@ -36,8 +36,9 @@ public class PredmetInfo {
                     info.put(0, "0");
                     info.put(1, tfSifra.getText());
                     info.put(2, tfIme.getText());
+                    info.put(3, "0/0");
 
-                    Object[] obj = new Object[info.size() + 1];
+                    Object[] obj = new Object[info.size()];
                     int i = 0;
 
                     for(Integer key : info.keySet()) {
@@ -84,7 +85,7 @@ public class PredmetInfo {
                     info.put(1, tfSifra.getText());
                     info.put(2, tfIme.getText());
 
-                    Object[] obj = new Object[info.size() + 1];
+                    Object[] obj = new Object[info.size()];
                     int i = 0;
 
                     for(Integer key : info.keySet()) {

@@ -34,8 +34,18 @@ public class CenovnikInfo {
                 }else {
                     info.put(0, "0");
                     info.put(1, tfRadnja.getText());
-                    info.put(2, tfCena.getText());
-                    info.put(3, tfPlaceno.getText());
+
+                    try {
+                        info.put(2, String.valueOf(Integer.parseInt(tfCena.getText())));
+                    }catch(NumberFormatException e1) {
+                        info.put(2, "0");
+                    }
+
+                    try {
+                        info.put(3, String.valueOf(Integer.parseInt(tfPlaceno.getText())));
+                    }catch(NumberFormatException e1) {
+                        info.put(3, "0");
+                    }
 
                     Object[] obj = new Object[info.size() + 1];
                     int i = 0;
@@ -77,8 +87,18 @@ public class CenovnikInfo {
                 }else {
                     info.put(0, id);
                     info.put(1, tfRadnja.getText());
-                    info.put(2, tfCena.getText());
-                    info.put(3, tfPlaceno.getText());
+
+                    try {
+                        info.put(2, String.valueOf(Integer.parseInt(tfCena.getText())));
+                    }catch(NumberFormatException e1) {
+                        info.put(2, "0");
+                    }
+
+                    try {
+                        info.put(3, String.valueOf(Integer.parseInt(tfPlaceno.getText())));
+                    }catch(NumberFormatException e1) {
+                        info.put(3, "0");
+                    }
 
                     Object[] obj = new Object[info.size() + 1];
                     int i = 0;

@@ -47,7 +47,7 @@ public class Predmeti {
             }
         };
 
-        String[] columns = {"ID", "Sifra", "Ime"};
+        String[] columns = {"ID", "Sifra", "Ime", "Placeno"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -229,7 +229,7 @@ public class Predmeti {
 
             while(rs.next()){
                 if(rs.getInt("klijent") == klijentId) {
-                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime")});
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), "0/0"});
                 }
 
                 if(rs.getInt("id") > maxID) {
@@ -240,6 +240,30 @@ public class Predmeti {
             rs.close();
         }catch(SQLException e) {
             e.printStackTrace();
+        }
+
+        for(int i = 0; i < table.getRowCount(); i++) {
+            int cena = 0;
+            int placeno = 0;
+
+            String id = String.valueOf(table.getValueAt(i, 0));
+
+            cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
+
+            try {
+                rs = Main.s.executeQuery(cmd);
+
+                while(rs.next()) {
+                    cena += rs.getInt("cena");
+                    placeno += rs.getInt("placeno");
+                }
+
+                table.setValueAt(placeno + "/" + cena, i, 3);
+
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
