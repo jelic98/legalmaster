@@ -72,6 +72,20 @@ public class Predmeti {
                     c.setBackground(row % 2 == 0 ? Color.decode("#ecf0f1") : Color.WHITE);
                 }
 
+                if(column == 0) {
+                    this.setHorizontalAlignment(JLabel.CENTER);
+                }else {
+                    this.setHorizontalAlignment(JLabel.LEFT);
+                }
+
+                if(column < 2) {
+                    c.setFont(c.getFont().deriveFont(Font.BOLD));
+                } else {
+                    c.setFont(c.getFont().deriveFont(Font.PLAIN));
+                }
+
+                table.getColumnModel().getColumn(0).setCellRenderer(this);
+
                 return c;
             }
         });

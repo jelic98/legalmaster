@@ -40,7 +40,7 @@ public class DatePicker {
 
                         if(!day.isEmpty() && button[selection].getForeground() == Color.RED) {
                             Kalendar kalendar = new Kalendar();
-                            kalendar.show(day + "." + l.getText());
+                            kalendar.show(day + "." + l.getText().replace("-", "."));
 
                             d.dispose();
                         }
@@ -130,7 +130,7 @@ public class DatePicker {
                 sDay = String.valueOf(day);
             }
 
-            String datum = sDay + "." + l.getText();
+            String datum = sDay + "." + l.getText().replace("-", ".");
 
             if(!String.valueOf(day).isEmpty() && checkDay(datum)) {
                 button[x].setForeground(Color.RED);

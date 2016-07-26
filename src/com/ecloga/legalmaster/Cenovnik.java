@@ -63,12 +63,22 @@ public class Cenovnik {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
                 if(!isSelected) {
-                    if(table.getValueAt(row, 2).equals(table.getValueAt(row, 3))) {
+                    if(Integer.parseInt(String.valueOf(table.getValueAt(row, 2))) <= Integer.parseInt(String.valueOf(table.getValueAt(row, 3)))) {
                         c.setBackground(Color.decode("#2ecc71"));
                     }else {
                         c.setBackground(Color.decode("#e74c3c"));
                     }
                 }
+
+                if(column == 0) {
+                    this.setHorizontalAlignment(JLabel.CENTER);
+                    c.setFont(c.getFont().deriveFont(Font.BOLD));
+                }else {
+                    this.setHorizontalAlignment(JLabel.LEFT);
+                    c.setFont(c.getFont().deriveFont(Font.PLAIN));
+                }
+
+                table.getColumnModel().getColumn(0).setCellRenderer(this);
 
                 return c;
             }
@@ -104,6 +114,8 @@ public class Cenovnik {
 
                     model.removeRow(selectedIndex);
                     cenovnik.remove(id);
+
+                    predmeti.refresh();
                 }else {
                     JOptionPane.showMessageDialog(null, "Radnja nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }

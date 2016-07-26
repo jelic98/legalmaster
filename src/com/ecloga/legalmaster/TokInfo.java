@@ -14,7 +14,7 @@ public class TokInfo {
     private int height = (int) (screenSize.getHeight() * 0.5);
     private JFrame frame = new JFrame();
     private JPanel panel;
-    private JTextField tfIme, tfDatum, tfVreme;
+    private JTextField tfFaza, tfDatum, tfVreme;
     private JButton bSacuvaj;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
@@ -28,11 +28,11 @@ public class TokInfo {
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tfIme.getText().isEmpty() || tfIme.getText() == null) {
+                if(tfFaza.getText().isEmpty() || tfFaza.getText() == null) {
                     JOptionPane.showMessageDialog(null, "Ime faze je neophodno", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
                     info.put(0, "0");
-                    info.put(1, tfIme.getText());
+                    info.put(1, tfFaza.getText());
                     info.put(2, tfDatum.getText());
                     info.put(3, tfVreme.getText());
 
@@ -63,18 +63,18 @@ public class TokInfo {
 
         id = info.get(0);
 
-        tfIme.setText(info.get(1));
+        tfFaza.setText(info.get(1));
         tfDatum.setText(info.get(2));
         tfVreme.setText(info.get(3));
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tfIme.getText().isEmpty() || tfIme.getText() == null) {
+                if(tfFaza.getText().isEmpty() || tfFaza.getText() == null) {
                     JOptionPane.showMessageDialog(null, "Ime faze je neophodno", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
                     info.put(0, id);
-                    info.put(1, tfIme.getText());
+                    info.put(1, tfFaza.getText());
                     info.put(2, tfDatum.getText());
                     info.put(3, tfVreme.getText());
 

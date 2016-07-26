@@ -3,8 +3,7 @@ package com.ecloga.legalmaster;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,14 +64,34 @@ public class Klijenti {
                     c.setBackground(row % 2 == 0 ? Color.decode("#ecf0f1") : Color.WHITE);
                 }
 
+                if(column == 0) {
+                    this.setHorizontalAlignment(JLabel.CENTER);
+                }else {
+                    this.setHorizontalAlignment(JLabel.LEFT);
+                }
+
+                if(column < 2) {
+                    c.setFont(c.getFont().deriveFont(Font.BOLD));
+                } else {
+                    c.setFont(c.getFont().deriveFont(Font.PLAIN));
+                }
+
+                table.getColumnModel().getColumn(0).setCellRenderer(this);
+
                 return c;
             }
         });
 
+        TableColumnModel tcm = table.getColumnModel();
+        tcm.getColumn(0).setPreferredWidth(25);
+        tcm.getColumn(1).setPreferredWidth(100);
+        tcm.getColumn(2).setPreferredWidth(50);
+        tcm.getColumn(3).setPreferredWidth(100);
+        tcm.getColumn(3).setMinWidth(200);
+
         refresh();
 
         scrollPane = new JScrollPane(table);
-
 
         bDodaj = new JButton("Dodaj");
         bDodaj.addActionListener(new ActionListener() {

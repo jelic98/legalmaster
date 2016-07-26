@@ -66,6 +66,16 @@ public class Tok {
                     c.setBackground(row % 2 == 0 ? Color.decode("#ecf0f1") : Color.WHITE);
                 }
 
+                if(column == 0) {
+                    this.setHorizontalAlignment(JLabel.CENTER);
+                    c.setFont(c.getFont().deriveFont(Font.BOLD));
+                }else {
+                    this.setHorizontalAlignment(JLabel.LEFT);
+                    c.setFont(c.getFont().deriveFont(Font.PLAIN));
+                }
+
+                table.getColumnModel().getColumn(0).setCellRenderer(this);
+
                 return c;
             }
         });
