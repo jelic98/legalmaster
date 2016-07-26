@@ -8,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class PredmetInfo {
@@ -16,9 +17,8 @@ public class PredmetInfo {
     private int height = (int) (screenSize.getHeight() * 0.5);
     private JFrame frame = new JFrame();
     private JPanel panel;
-    private JTextField tfIme, tfSifra;
-    private JButton bSacuvaj;
-    private JButton bOtvori;
+    private JTextField tfIme, tfSifra, tfNapomena;
+    private JButton bSacuvaj, bOtvori;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
 
@@ -26,6 +26,7 @@ public class PredmetInfo {
         nazivForme = "Dodaj predmet";
 
         tfIme.setText("");
+        tfNapomena.setText("");
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
@@ -36,7 +37,8 @@ public class PredmetInfo {
                     info.put(0, "0");
                     info.put(1, tfSifra.getText());
                     info.put(2, tfIme.getText());
-                    info.put(3, "0/0");
+                    info.put(3, tfNapomena.getText());
+                    info.put(4, "0/0");
 
                     Object[] obj = new Object[info.size()];
                     int i = 0;
@@ -74,6 +76,7 @@ public class PredmetInfo {
 
         tfSifra.setText(info.get(1));
         tfIme.setText(info.get(2));
+        tfNapomena.setText(info.get(3));
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
@@ -84,6 +87,7 @@ public class PredmetInfo {
                     info.put(0, id);
                     info.put(1, tfSifra.getText());
                     info.put(2, tfIme.getText());
+                    info.put(3, tfNapomena.getText());
 
                     Object[] obj = new Object[info.size()];
                     int i = 0;

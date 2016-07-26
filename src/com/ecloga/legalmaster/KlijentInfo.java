@@ -11,7 +11,7 @@ public class KlijentInfo {
     private int height = (int) (screenSize.getHeight() * 0.5);
     private JFrame frame = new JFrame();
     private JPanel panel;
-    private JTextField tfIme, tfBroj, tfEmail, tfAdresa;
+    private JTextField tfIme, tfBroj, tfEmail, tfAdresa, tfNapomena;
     private JButton bSacuvaj;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
@@ -22,6 +22,7 @@ public class KlijentInfo {
         tfBroj.setText("");
         tfEmail.setText("");
         tfAdresa.setText("");
+        tfNapomena.setText("");
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
@@ -34,6 +35,7 @@ public class KlijentInfo {
                     info.put(2, tfBroj.getText());
                     info.put(3, tfEmail.getText());
                     info.put(4, tfAdresa.getText());
+                    info.put(5, tfNapomena.getText());
 
                     Object[] obj = new Object[info.size() + 1];
                     int i = 0;
@@ -66,6 +68,7 @@ public class KlijentInfo {
         tfBroj.setText(info.get(2));
         tfEmail.setText(info.get(3));
         tfAdresa.setText(info.get(4));
+        tfNapomena.setText(info.get(5));
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
@@ -78,6 +81,7 @@ public class KlijentInfo {
                     info.put(2, tfBroj.getText());
                     info.put(3, tfEmail.getText());
                     info.put(4, tfAdresa.getText());
+                    info.put(5, tfNapomena.getText());
 
                     Object[] obj = new Object[info.size() + 1];
                     int i = 0;

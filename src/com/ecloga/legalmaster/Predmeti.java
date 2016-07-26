@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Predmeti {
@@ -52,7 +53,7 @@ public class Predmeti {
             }
         };
 
-        String[] columns = {"ID", "Sifra", "Ime", "Placeno"};
+        String[] columns = {"ID", "Sifra", "Ime", "Napomena", "Placeno"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -117,8 +118,8 @@ public class Predmeti {
                     if(selectedIndex != -1) {
                         String id = String.valueOf(table.getValueAt(selectedIndex, 0));
 
-                        Main.executeDB("DELETE FROM predmeti WHERE id=" + id);
                         Main.executeDB("DELETE FROM tok WHERE predmet=" + id);
+                        Main.executeDB("DELETE FROM cenovnik WHERE predmet=" + id);
 
                         model.removeRow(selectedIndex);
                         predmeti.remove(id);
@@ -130,6 +131,8 @@ public class Predmeti {
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
+
+                        Main.executeDB("DELETE FROM predmeti WHERE id=" + id);
                     }else {
                         JOptionPane.showMessageDialog(null, "Predmet nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -236,8 +239,7 @@ public class Predmeti {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', "+ getId() + ")");
+        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '"  + row[3] + "', " + getId() + ")");
         addRow(row);
     }
 
@@ -249,7 +251,7 @@ public class Predmeti {
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "' WHERE id=" + id);
+        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', napomena='" + row[3] + "' WHERE id=" + id);
         refresh();
     }
 
@@ -268,7 +270,7 @@ public class Predmeti {
 
             while(rs.next()){
                 if(rs.getInt("klijent") == klijentId) {
-                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), "0/0"});
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("napomena"), "0/0"});
                 }
 
                 if(rs.getInt("id") > maxID) {
@@ -297,7 +299,7 @@ public class Predmeti {
                     placeno += rs.getInt("placeno");
                 }
 
-                table.setValueAt(placeno + "/" + cena, i, 3);
+                table.setValueAt(placeno + "/" + cena, i, 4);
 
                 rs.close();
             } catch (SQLException e) {
