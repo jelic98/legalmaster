@@ -28,7 +28,7 @@ public class Predmeti {
     private DefaultTableModel model;
     private JTable table;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bTok, bCenovnik;
+    private JButton bDodaj, bUkloni, bIzmeni, bTok, bCenovnik, bMedija;
     private ArrayList<String> predmeti = new ArrayList<String>();
     private String klijentIme;
     private int maxID = 0;
@@ -217,6 +217,22 @@ public class Predmeti {
             }
         });
 
+        bMedija = new JButton("Medija");
+        bMedija.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = table.getSelectedRow();
+
+                if(selectedIndex != -1) {
+                    String id = String.valueOf(table.getValueAt(selectedIndex, 0));
+
+                    openMedia(Main.directoryName + File.separator + "media" + File.separator + id);
+                }else {
+                    JOptionPane.showMessageDialog(null, "Predmet nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -224,6 +240,14 @@ public class Predmeti {
                 Klijenti.predmetiShown.remove(klijentIme);
             }
         });
+    }
+
+    private void openMedia(String dir) {
+        try {
+            Desktop.getDesktop().open(new File(dir));
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void add(Object[] row) {
@@ -343,6 +367,7 @@ public class Predmeti {
         menuPanel.add(bIzmeni);
         menuPanel.add(bTok);
         menuPanel.add(bCenovnik);
+        menuPanel.add(bMedija);
 
         tablePanel.add(scrollPane);
 

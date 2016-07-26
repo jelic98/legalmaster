@@ -227,8 +227,6 @@ public class Klijenti {
                 if(cbKlijenti.isSelected()) {
                     ArrayList<String> list = new ArrayList<String>();
 
-                    list.add("ID" + "   " + "IME I PREZIME" + "   " + "BROJ TELEFONA" + "   " + "EMAIL" + "   " + "ADRESA" + "   " + "NAPOMENA");
-
                     String cmd = "SELECT * FROM klijenti";
 
                     ResultSet rs = null;
@@ -250,8 +248,8 @@ public class Klijenti {
 
                 if(cbPredmeti.isSelected()) {
                     ArrayList<String> list = new ArrayList<String>();
-
-                    list.add("ID" + "   " + "SIFRA" + "   " + "IME" + "   " + "NAPOMENA" + "   " + "PLACENO");
+                    ArrayList<Integer> klijentiId = new ArrayList<Integer>();
+                    ArrayList<String> klijentiIme = new ArrayList<String>();
 
                     String cmd = "SELECT * FROM predmeti";
 
@@ -261,9 +259,10 @@ public class Klijenti {
                         rs = Main.s.executeQuery(cmd);
 
                         while(rs.next()) {
-                            String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("napomena") + "   ";
-
+                            String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("napomena");
                             list.add(line);
+
+                            klijentiId.add(rs.getInt("klijent"));
                         }
 
                         rs.close();
@@ -271,11 +270,27 @@ public class Klijenti {
                         e1.printStackTrace();
                     }
 
+                    for(Integer klijentId : klijentiId) {
+                        cmd = "SELECT * FROM klijenti WHERE id=" + klijentId;
+
+                        try {
+                            rs = Main.s.executeQuery(cmd);
+
+                            while(rs.next()) {
+                                klijentiIme.add(rs.getString("ime"));
+                            }
+
+                            rs.close();
+                        }catch(SQLException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+
                     for(String line : list) {
+                        String id = String.valueOf(line.substring(0, line.indexOf("   ")));
+
                         int cena = 0;
                         int placeno = 0;
-
-                        String id = String.valueOf(line.substring(0, line.indexOf("   ")));
 
                         cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
 
@@ -287,7 +302,7 @@ public class Klijenti {
                                 placeno += rs.getInt("placeno");
                             }
 
-                            list.set(list.indexOf(line), line + placeno + "/" + cena);
+                            list.set(list.indexOf(line), line + "   " + klijentiIme.get(list.indexOf(line)) + "   " + placeno + "/" + cena);
 
                             rs.close();
                         }catch(SQLException e1) {
@@ -301,10 +316,18 @@ public class Klijenti {
                 if(!cbKlijenti.isSelected() && !cbPredmeti.isSelected()) {
                     JOptionPane.showMessageDialog(null, "Lista nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null, "Lokacija: " + Main.directoryName + File.separator + "stampa", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                    openStampa(Main.directoryName + File.separator + "stampa");
                 }
             }
         });
+    }
+
+    private void openStampa(String dir) {
+        try {
+            Desktop.getDesktop().open(new File(dir));
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void add(Object[] row) {

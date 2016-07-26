@@ -118,7 +118,7 @@ public class PredmetInfo {
     private void openMedia(String dir) {
         try {
             Desktop.getDesktop().open(new File(dir));
-        } catch (IOException e) {
+        }catch(IOException e) {
             e.printStackTrace();
         }
     }
