@@ -24,6 +24,7 @@ public class Main {
         writeDirectory(directoryName);
         writeDirectory(directoryName + File.separator + "media");
         writeDirectory(directoryName + File.separator + "media" + File.separator + "temp");
+        writeDirectory(directoryName + File.separator + "stampa");
 
         showSplashScreen();
 

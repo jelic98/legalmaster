@@ -309,7 +309,7 @@ public class Predmeti {
                 table.setValueAt(placeno + "/" + cena, i, 4);
 
                 rs.close();
-            } catch (SQLException e) {
+            }catch(SQLException e) {
                 e.printStackTrace();
             }
         }

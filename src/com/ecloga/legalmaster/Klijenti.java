@@ -23,11 +23,13 @@ public class Klijenti {
     private static JTable table;
     private JLabel lEcloga;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar;
+    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar, bStampaj;
     private static ArrayList<String> klijenti = new ArrayList<String>();
     private static int maxID = 0;
     public static boolean infoShown = false;
     public static ArrayList<String> predmetiShown = new ArrayList<String>();
+    private JCheckBox cbKlijenti, cbPredmeti;
+
     public Klijenti() {
         panel = new JPanel();
         tablePanel = new JPanel();
@@ -214,6 +216,95 @@ public class Klijenti {
                 kalendar.pick();
             }
         });
+
+        cbKlijenti = new JCheckBox("Klijenti", false);
+        cbPredmeti = new JCheckBox("Predmeti", false);
+
+        bStampaj = new JButton("Stampaj");
+        bStampaj.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(cbKlijenti.isSelected()) {
+                    ArrayList<String> list = new ArrayList<String>();
+
+                    list.add("ID" + "   " + "IME I PREZIME" + "   " + "BROJ TELEFONA" + "   " + "EMAIL" + "   " + "ADRESA" + "   " + "NAPOMENA");
+
+                    String cmd = "SELECT * FROM klijenti";
+
+                    ResultSet rs = null;
+
+                    try {
+                        rs = Main.s.executeQuery(cmd);
+
+                        while(rs.next()) {
+                            list.add(rs.getInt("id") + "   " + rs.getString("ime") + "   " + rs.getString("broj") + "   " + rs.getString("email") + "   " + rs.getString("adresa") + "   " + rs.getString("napomena"));
+                        }
+
+                        rs.close();
+                    }catch(SQLException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "klijenti.txt", list);
+                }
+
+                if(cbPredmeti.isSelected()) {
+                    ArrayList<String> list = new ArrayList<String>();
+
+                    list.add("ID" + "   " + "SIFRA" + "   " + "IME" + "   " + "NAPOMENA" + "   " + "PLACENO");
+
+                    String cmd = "SELECT * FROM predmeti";
+
+                    ResultSet rs = null;
+
+                    try {
+                        rs = Main.s.executeQuery(cmd);
+
+                        while(rs.next()) {
+                            String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("napomena") + "   ";
+
+                            list.add(line);
+                        }
+
+                        rs.close();
+                    }catch(SQLException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    for(String line : list) {
+                        int cena = 0;
+                        int placeno = 0;
+
+                        String id = String.valueOf(line.substring(0, line.indexOf("   ")));
+
+                        cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
+
+                        try {
+                            rs = Main.s.executeQuery(cmd);
+
+                            while(rs.next()) {
+                                cena += rs.getInt("cena");
+                                placeno += rs.getInt("placeno");
+                            }
+
+                            list.set(list.indexOf(line), line + placeno + "/" + cena);
+
+                            rs.close();
+                        }catch(SQLException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                    Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "predmeti.txt", list);
+                }
+
+                if(!cbKlijenti.isSelected() && !cbPredmeti.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "Lista nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null, "Lokacija: " + Main.directoryName + File.separator + "stampa", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
     }
 
     public static void add(Object[] row) {
@@ -267,6 +358,9 @@ public class Klijenti {
         menuPanel.add(bIzmeni);
         menuPanel.add(bPredmeti);
         menuPanel.add(bKalendar);
+        menuPanel.add(cbKlijenti);
+        menuPanel.add(cbPredmeti);
+        menuPanel.add(bStampaj);
 
         tablePanel.add(scrollPane);
 
