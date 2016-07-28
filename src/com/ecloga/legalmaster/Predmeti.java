@@ -21,8 +21,8 @@ import java.util.HashMap;
 
 public class Predmeti {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private int width = (int) (screenSize.getWidth() * 0.5);
-    private int height = (int) (screenSize.getHeight() * 0.5);
+    private int width = (int) (screenSize.getWidth() * 0.6);
+    private int height = (int) (screenSize.getHeight() * 0.6);
     private JPanel panel, tablePanel, menuPanel;
     private DefaultTableModel model;
     private JTable table;
@@ -57,7 +57,7 @@ public class Predmeti {
             }
         };
 
-        String[] columns = {"ID", "Sifra", "Ime", "Napomena", "Placeno"};
+        String[] columns = {"ID", "Sifra", "Ime", "Suprotna strana", "Sud", "Sudija", "Napomena", "Placeno"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -99,8 +99,11 @@ public class Predmeti {
         columnModel.getColumn(0).setMaxWidth(75);
         columnModel.getColumn(1).setPreferredWidth(100);
         columnModel.getColumn(2).setPreferredWidth(200);
-        columnModel.getColumn(3).setPreferredWidth(300);
-        columnModel.getColumn(4).setMinWidth(100);
+        columnModel.getColumn(3).setPreferredWidth(200);
+        columnModel.getColumn(4).setPreferredWidth(200);
+        columnModel.getColumn(5).setPreferredWidth(200);
+        columnModel.getColumn(6).setPreferredWidth(300);
+        columnModel.getColumn(7).setMinWidth(100);
 
         refresh();
 
@@ -306,7 +309,7 @@ public class Predmeti {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Medija se ne moze premestiti", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '"  + row[3] + "', " + getId() + ")");
+        Main.executeDB("INSERT INTO predmeti VALUES (" + row[0] + ", '" + row[1] + "', '" + row[2] + "', '"  + row[3] + "', '"  + row[4] + "', '"  + row[5] + "', '"  + row[6] + "', " + getId() + ")");
         addRow(row);
     }
 
@@ -318,7 +321,7 @@ public class Predmeti {
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', napomena='" + row[3] + "' WHERE id=" + id);
+        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', strana='" + row[3] + "', sud='" + row[4] + "', sudija='" + row[5] + "', napomena='" + row[3] + "' WHERE id=" + id);
         refresh();
     }
 
@@ -337,7 +340,7 @@ public class Predmeti {
 
             while(rs.next()){
                 if(rs.getInt("klijent") == klijentId) {
-                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("napomena"), "0/0"});
+                    addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("strana"), rs.getString("sud"), rs.getString("sudija"), rs.getString("napomena"), "0/0"});
                 }
 
                 if(rs.getInt("id") > maxID) {
@@ -366,7 +369,7 @@ public class Predmeti {
                     placeno += rs.getInt("placeno");
                 }
 
-                table.setValueAt(placeno + "/" + cena, i, 4);
+                table.setValueAt(placeno + "/" + cena, i, 7);
 
                 rs.close();
             }catch(SQLException e) {
@@ -389,7 +392,7 @@ public class Predmeti {
             rs = Main.s.executeQuery(cmd);
 
             while(rs.next()){
-                addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("napomena"), "0/0"});
+                addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("strana"), rs.getString("sud"), rs.getString("sudija"), rs.getString("napomena"), "0/0"});
 
                 counter++;
             }
@@ -415,7 +418,7 @@ public class Predmeti {
                     placeno += rs.getInt("placeno");
                 }
 
-                table.setValueAt(placeno + "/" + cena, i, 4);
+                table.setValueAt(placeno + "/" + cena, i, 7);
 
                 rs.close();
             }catch(SQLException e) {

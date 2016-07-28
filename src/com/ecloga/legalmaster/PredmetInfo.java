@@ -16,7 +16,7 @@ public class PredmetInfo {
     private int height = (int) (screenSize.getHeight() * 0.5);
     private JFrame frame = new JFrame();
     private JPanel panel;
-    private JTextField tfIme, tfSifra, tfNapomena;
+    private JTextField tfIme, tfSifra, tfNapomena, tfStrana, tfSud, tfSudija;
     private JButton bSacuvaj, bOtvori;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
@@ -26,6 +26,9 @@ public class PredmetInfo {
 
         tfIme.setText("");
         tfNapomena.setText("");
+        tfStrana.setText("");
+        tfSud.setText("");
+        tfSudija.setText("");
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
@@ -36,8 +39,11 @@ public class PredmetInfo {
                     info.put(0, "0");
                     info.put(1, tfSifra.getText());
                     info.put(2, tfIme.getText());
-                    info.put(3, tfNapomena.getText());
-                    info.put(4, "0/0");
+                    info.put(3, tfStrana.getText());
+                    info.put(4, tfSud.getText());
+                    info.put(5, tfSudija.getText());
+                    info.put(6, tfNapomena.getText());
+                    info.put(7, "0/0");
 
                     Object[] obj = new Object[info.size()];
                     int i = 0;
@@ -75,7 +81,10 @@ public class PredmetInfo {
 
         tfSifra.setText(info.get(1));
         tfIme.setText(info.get(2));
-        tfNapomena.setText(info.get(3));
+        tfStrana.setText(info.get(3));
+        tfSud.setText(info.get(4));
+        tfSudija.setText(info.get(5));
+        tfNapomena.setText(info.get(6));
 
         bSacuvaj.addActionListener(new ActionListener() {
             @Override
@@ -86,7 +95,10 @@ public class PredmetInfo {
                     info.put(0, id);
                     info.put(1, tfSifra.getText());
                     info.put(2, tfIme.getText());
-                    info.put(3, tfNapomena.getText());
+                    info.put(3, tfStrana.getText());
+                    info.put(4, tfSud.getText());
+                    info.put(5, tfSudija.getText());
+                    info.put(6, tfNapomena.getText());
 
                     Object[] obj = new Object[info.size()];
                     int i = 0;

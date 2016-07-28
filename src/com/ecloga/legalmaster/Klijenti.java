@@ -460,7 +460,7 @@ public class Klijenti {
     private void searchPredmeti(String keyword) {
         model.setColumnCount(0);
 
-        String[] columns = {"ID", "Sifra", "Ime", "Napomena", "Placeno"};
+        String[] columns = {"ID", "Sifra", "Ime", "Suprotna strana", "Sud", "Sudija", "Napomena", "Placeno"};
 
         for(String value : columns) {
             model.addColumn(value);
@@ -479,7 +479,7 @@ public class Klijenti {
             rs = Main.s.executeQuery(cmd);
 
             while(rs.next()){
-                addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("napomena"), "0/0"});
+                addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("strana"), rs.getString("sud"), rs.getString("sudija"), rs.getString("napomena"), "0/0"});
 
                 counter++;
             }
@@ -505,7 +505,7 @@ public class Klijenti {
                     placeno += rs.getInt("placeno");
                 }
 
-                table.setValueAt(placeno + "/" + cena, i, 4);
+                table.setValueAt(placeno + "/" + cena, i, 7);
 
                 rs.close();
             }catch(SQLException e) {

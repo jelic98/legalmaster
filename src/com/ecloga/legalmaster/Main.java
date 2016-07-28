@@ -81,7 +81,7 @@ public class Main {
             createStatement(CREATE_URL);
 
             s.execute("CREATE TABLE klijenti (id INTEGER not NULL, ime VARCHAR(50), broj VARCHAR(25), email VARCHAR(50), adresa VARCHAR(100), napomena VARCHAR(250), PRIMARY KEY (id))");
-            s.execute("CREATE TABLE predmeti (id INTEGER not NULL, sifra VARCHAR(25), ime VARCHAR(100), napomena VARCHAR(250), klijent INTEGER, PRIMARY KEY (id))");
+            s.execute("CREATE TABLE predmeti (id INTEGER not NULL, sifra VARCHAR(25), ime VARCHAR(100), strana VARCHAR(50), sud VARCHAR(100), sudija VARCHAR(50), napomena VARCHAR(250), klijent INTEGER, PRIMARY KEY (id))");
             s.execute("CREATE TABLE tok (id INTEGER not NULL, ime VARCHAR(100), datum VARCHAR(10), vreme VARCHAR(10), predmet INTEGER, PRIMARY KEY (id))");
             s.execute("CREATE TABLE cenovnik (id INTEGER not NULL, radnja VARCHAR(100), cena VARCHAR(10), placeno VARCHAR(10), predmet INTEGER, PRIMARY KEY (id))");
         }catch(ClassNotFoundException | SQLException e) {
