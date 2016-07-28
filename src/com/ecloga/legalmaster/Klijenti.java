@@ -1,6 +1,7 @@
 package com.ecloga.legalmaster;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.output.StringBuilderWriter;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -23,17 +24,23 @@ public class Klijenti {
     private static JTable table;
     private JLabel lEcloga;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar, bStampaj;
+    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar, bStampaj, bTrazi;
+    private JTextField tfTrazi;
     private static ArrayList<String> klijenti = new ArrayList<String>();
     private static int maxID = 0;
     public static boolean infoShown = false;
     public static ArrayList<String> predmetiShown = new ArrayList<String>();
-    private JCheckBox cbKlijenti, cbPredmeti;
+    private JRadioButton rKlijenti, rPredmeti;
+    private JFrame frame = new JFrame();
+    private boolean searchShown = false;
 
     public Klijenti() {
         panel = new JPanel();
         tablePanel = new JPanel();
         menuPanel = new JPanel();
+
+        tfTrazi = new JTextField();
+        tfTrazi.setColumns(10);
 
         lEcloga = new JLabel("Copyright © Ecloga Apps");
         lEcloga.setForeground(Color.GRAY);
@@ -45,12 +52,6 @@ public class Klijenti {
                 return false;
             }
         };
-
-        String[] columns = {"ID", "Ime i prezime", "Broj telefona", "Email", "Adresa", "Napomena"};
-
-        for(String value : columns) {
-            model.addColumn(value);
-        }
 
         table.setPreferredScrollableViewportSize(new Dimension(width, (int) (height * 0.8)));
         table.setFillsViewportHeight(true);
@@ -84,6 +85,8 @@ public class Klijenti {
             }
         });
 
+        refresh();
+
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(0).setMaxWidth(75);
         columnModel.getColumn(1).setPreferredWidth(200);
@@ -91,8 +94,6 @@ public class Klijenti {
         columnModel.getColumn(3).setPreferredWidth(200);
         columnModel.getColumn(4).setPreferredWidth(300);
         columnModel.getColumn(5).setMinWidth(300);
-
-        refresh();
 
         scrollPane = new JScrollPane(table);
 
@@ -217,106 +218,150 @@ public class Klijenti {
             }
         });
 
-        cbKlijenti = new JCheckBox("Klijenti", false);
-        cbPredmeti = new JCheckBox("Predmeti", false);
+        rKlijenti = new JRadioButton("Klijenti");
+        rPredmeti = new JRadioButton("Predmeti");
+
+        rKlijenti.setSelected(true);
+
+        ButtonGroup group = new ButtonGroup();
+
+        group.add(rKlijenti);
+        group.add(rPredmeti);
 
         bStampaj = new JButton("Stampaj");
         bStampaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(cbKlijenti.isSelected()) {
-                    ArrayList<String> list = new ArrayList<String>();
+                ArrayList<String> list = new ArrayList<String>();
 
-                    String cmd = "SELECT * FROM klijenti";
+                String cmd = "SELECT * FROM klijenti";
 
-                    ResultSet rs = null;
+                ResultSet rs = null;
+
+                try {
+                    rs = Main.s.executeQuery(cmd);
+
+                    while(rs.next()) {
+                        list.add(rs.getInt("id") + "   " + rs.getString("ime") + "   " + rs.getString("broj") + "   " + rs.getString("email") + "   " + rs.getString("adresa") + "   " + rs.getString("napomena"));
+                    }
+
+                    rs.close();
+                }catch(SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+                Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "klijenti.txt", list);
+
+                list.clear();
+
+                ArrayList<Integer> klijentiId = new ArrayList<Integer>();
+                ArrayList<String> klijentiIme = new ArrayList<String>();
+
+                cmd = "SELECT * FROM predmeti";
+
+                rs = null;
+
+                try {
+                    rs = Main.s.executeQuery(cmd);
+
+                    while(rs.next()) {
+                        String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("napomena");
+                        list.add(line);
+
+                        klijentiId.add(rs.getInt("klijent"));
+                    }
+
+                    rs.close();
+                }catch(SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+                for(Integer klijentId : klijentiId) {
+                    cmd = "SELECT * FROM klijenti WHERE id=" + klijentId;
 
                     try {
                         rs = Main.s.executeQuery(cmd);
 
                         while(rs.next()) {
-                            list.add(rs.getInt("id") + "   " + rs.getString("ime") + "   " + rs.getString("broj") + "   " + rs.getString("email") + "   " + rs.getString("adresa") + "   " + rs.getString("napomena"));
+                            klijentiIme.add(rs.getString("ime"));
                         }
 
                         rs.close();
                     }catch(SQLException e1) {
                         e1.printStackTrace();
                     }
-
-                    Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "klijenti.txt", list);
                 }
 
-                if(cbPredmeti.isSelected()) {
-                    ArrayList<String> list = new ArrayList<String>();
-                    ArrayList<Integer> klijentiId = new ArrayList<Integer>();
-                    ArrayList<String> klijentiIme = new ArrayList<String>();
+                for(String line : list) {
+                    String id = String.valueOf(line.substring(0, line.indexOf("   ")));
 
-                    String cmd = "SELECT * FROM predmeti";
+                    int cena = 0;
+                    int placeno = 0;
 
-                    ResultSet rs = null;
+                    cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
 
                     try {
                         rs = Main.s.executeQuery(cmd);
 
                         while(rs.next()) {
-                            String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("napomena");
-                            list.add(line);
-
-                            klijentiId.add(rs.getInt("klijent"));
+                            cena += rs.getInt("cena");
+                            placeno += rs.getInt("placeno");
                         }
+
+                        list.set(list.indexOf(line), line + "   " + klijentiIme.get(list.indexOf(line)) + "   " + placeno + "/" + cena);
 
                         rs.close();
                     }catch(SQLException e1) {
                         e1.printStackTrace();
                     }
-
-                    for(Integer klijentId : klijentiId) {
-                        cmd = "SELECT * FROM klijenti WHERE id=" + klijentId;
-
-                        try {
-                            rs = Main.s.executeQuery(cmd);
-
-                            while(rs.next()) {
-                                klijentiIme.add(rs.getString("ime"));
-                            }
-
-                            rs.close();
-                        }catch(SQLException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-
-                    for(String line : list) {
-                        String id = String.valueOf(line.substring(0, line.indexOf("   ")));
-
-                        int cena = 0;
-                        int placeno = 0;
-
-                        cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
-
-                        try {
-                            rs = Main.s.executeQuery(cmd);
-
-                            while(rs.next()) {
-                                cena += rs.getInt("cena");
-                                placeno += rs.getInt("placeno");
-                            }
-
-                            list.set(list.indexOf(line), line + "   " + klijentiIme.get(list.indexOf(line)) + "   " + placeno + "/" + cena);
-
-                            rs.close();
-                        }catch(SQLException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-
-                    Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "predmeti.txt", list);
                 }
 
-                if(!cbKlijenti.isSelected() && !cbPredmeti.isSelected()) {
-                    JOptionPane.showMessageDialog(null, "Lista nije selektovana", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "predmeti.txt", list);
+
+                openStampa(Main.directoryName + File.separator + "stampa");
+            }
+        });
+
+        bTrazi = new JButton("Trazi");
+        bTrazi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tfTrazi.getText().isEmpty() || tfTrazi.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Kriterijum pretrage je neophodan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    openStampa(Main.directoryName + File.separator + "stampa");
+                    if(!searchShown) {
+                        if(rKlijenti.isSelected()) {
+                            searchKlijenti(tfTrazi.getText());
+                        }else if(rPredmeti.isSelected()) {
+                            searchPredmeti(tfTrazi.getText());
+                        }
+
+                        bTrazi.setText("Nazad");
+
+                        tfTrazi.setVisible(false);
+                        bStampaj.setVisible(false);
+                        rPredmeti.setVisible(false);
+                        rKlijenti.setVisible(false);
+                        bKalendar.setVisible(false);
+
+                        frame.setTitle("Pretraga");
+
+                        searchShown = true;
+                    }else {
+                        refresh();
+
+                        bTrazi.setText("Trazi");
+
+                        tfTrazi.setVisible(true);
+                        bStampaj.setVisible(true);
+                        rPredmeti.setVisible(true);
+                        rKlijenti.setVisible(true);
+                        bKalendar.setVisible(true);
+
+                        frame.setTitle("LegalMaster");
+
+                        searchShown = false;
+                    }
                 }
             }
         });
@@ -351,6 +396,14 @@ public class Klijenti {
     }
 
     public static void refresh() {
+        model.setColumnCount(0);
+
+        String[] columns = {"ID", "Ime i prezime", "Broj telefona", "Email", "Adresa", "Napomena"};
+
+        for(String value : columns) {
+            model.addColumn(value);
+        }
+
         model.setRowCount(0);
         table.setModel(model);
 
@@ -375,15 +428,107 @@ public class Klijenti {
         }
     }
 
+    private static void searchKlijenti(String keyword) {
+        model.setRowCount(0);
+        table.setModel(model);
+
+        int counter = 0;
+
+        String cmd = "SELECT * FROM klijenti WHERE ime LIKE '%" + keyword + "%'";
+
+        ResultSet rs = null;
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                addRow(new Object[] {rs.getInt("id"), rs.getString("ime"), rs.getString("broj"), rs.getString("email"), rs.getString("adresa"), rs.getString("napomena")});
+
+                counter++;
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(counter == 0) {
+            JOptionPane.showMessageDialog(null, "Nema rezultata pretrage", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private void searchPredmeti(String keyword) {
+        model.setColumnCount(0);
+
+        String[] columns = {"ID", "Sifra", "Ime", "Napomena", "Placeno"};
+
+        for(String value : columns) {
+            model.addColumn(value);
+        }
+
+        model.setRowCount(0);
+        table.setModel(model);
+
+        int counter = 0;
+
+        String cmd = "SELECT * FROM predmeti WHERE sifra LIKE '%" + keyword + "%'";
+
+        ResultSet rs = null;
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("napomena"), "0/0"});
+
+                counter++;
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0; i < table.getRowCount(); i++) {
+            int cena = 0;
+            int placeno = 0;
+
+            String id = String.valueOf(table.getValueAt(i, 0));
+
+            cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
+
+            try {
+                rs = Main.s.executeQuery(cmd);
+
+                while(rs.next()) {
+                    cena += rs.getInt("cena");
+                    placeno += rs.getInt("placeno");
+                }
+
+                table.setValueAt(placeno + "/" + cena, i, 4);
+
+                rs.close();
+            }catch(SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(counter == 0) {
+            JOptionPane.showMessageDialog(null, "Nema rezultata pretrage", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
     public void show() {
         menuPanel.add(bDodaj);
         menuPanel.add(bUkloni);
         menuPanel.add(bIzmeni);
         menuPanel.add(bPredmeti);
         menuPanel.add(bKalendar);
-        menuPanel.add(cbKlijenti);
-        menuPanel.add(cbPredmeti);
         menuPanel.add(bStampaj);
+        menuPanel.add(tfTrazi);
+        menuPanel.add(rKlijenti);
+        menuPanel.add(rPredmeti);
+        menuPanel.add(bTrazi);
 
         tablePanel.add(scrollPane);
 
@@ -391,7 +536,6 @@ public class Klijenti {
         panel.add(tablePanel);
         panel.add(lEcloga);
 
-        JFrame frame = new JFrame();
         frame.setTitle("LegalMaster");
         frame.setSize(new Dimension(width, height));
         frame.setLocation(screenSize.width / 2 - width / 2,screenSize.height / 2 - height / 2);

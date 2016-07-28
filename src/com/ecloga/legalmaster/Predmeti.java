@@ -1,7 +1,6 @@
 package com.ecloga.legalmaster;
 
 import org.apache.commons.io.FileUtils;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +27,8 @@ public class Predmeti {
     private DefaultTableModel model;
     private JTable table;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bTok, bCenovnik, bMedija;
+    private JButton bDodaj, bUkloni, bIzmeni, bTok, bCenovnik, bMedija, bTrazi;
+    private JTextField tfTrazi;
     private ArrayList<String> predmeti = new ArrayList<String>();
     private String klijentIme;
     private int maxID = 0;
@@ -37,6 +37,7 @@ public class Predmeti {
     private JFrame frame = new JFrame();
     public ArrayList<String> tokShown = new ArrayList<String>();
     public ArrayList<String> cenovnikShown = new ArrayList<String>();
+    private boolean searchShown = false;
 
     public Predmeti(String klijentIme) {
         this.klijentIme = klijentIme;
@@ -44,6 +45,9 @@ public class Predmeti {
         panel = new JPanel();
         tablePanel = new JPanel();
         menuPanel = new JPanel();
+
+        tfTrazi = new JTextField();
+        tfTrazi.setColumns(5);
 
         model = new DefaultTableModel();
 
@@ -171,7 +175,7 @@ public class Predmeti {
             }
         });
 
-        bTok = new JButton("Tok predmeta");
+        bTok = new JButton("Tok");
         bTok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -229,6 +233,38 @@ public class Predmeti {
                     openMedia(Main.directoryName + File.separator + "media" + File.separator + id);
                 }else {
                     JOptionPane.showMessageDialog(null, "Predmet nije selektovan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
+        bTrazi = new JButton("Trazi");
+        bTrazi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tfTrazi.getText().isEmpty() || tfTrazi.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Kriterijum pretrage je neophodan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    if(!searchShown) {
+                        search(tfTrazi.getText());
+
+                        bTrazi.setText("Nazad");
+
+                        tfTrazi.setVisible(false);
+
+                        frame.setTitle("Pretraga");
+
+                        searchShown = true;
+                    }else {
+                        refresh();
+
+                        bTrazi.setText("Trazi");
+
+                        tfTrazi.setVisible(true);
+
+                        frame.setTitle(klijentIme + " - Predmeti");
+
+                        searchShown = false;
+                    }
                 }
             }
         });
@@ -339,6 +375,59 @@ public class Predmeti {
         }
     }
 
+    private void search(String keyword) {
+        model.setRowCount(0);
+        table.setModel(model);
+
+        int counter = 0;
+
+        String cmd = "SELECT * FROM predmeti WHERE sifra LIKE '%" + keyword + "%'";
+
+        ResultSet rs = null;
+
+        try {
+            rs = Main.s.executeQuery(cmd);
+
+            while(rs.next()){
+                addRow(new Object[] {rs.getInt("id"), rs.getString("sifra"), rs.getString("ime"), rs.getString("napomena"), "0/0"});
+
+                counter++;
+            }
+
+            rs.close();
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0; i < table.getRowCount(); i++) {
+            int cena = 0;
+            int placeno = 0;
+
+            String id = String.valueOf(table.getValueAt(i, 0));
+
+            cmd = "SELECT * FROM cenovnik WHERE predmet=" + id;
+
+            try {
+                rs = Main.s.executeQuery(cmd);
+
+                while(rs.next()) {
+                    cena += rs.getInt("cena");
+                    placeno += rs.getInt("placeno");
+                }
+
+                table.setValueAt(placeno + "/" + cena, i, 4);
+
+                rs.close();
+            }catch(SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(counter == 0) {
+            JOptionPane.showMessageDialog(null, "Nema rezultata pretrage", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
     private int getId() {
         ResultSet rs = null;
 
@@ -368,6 +457,8 @@ public class Predmeti {
         menuPanel.add(bTok);
         menuPanel.add(bCenovnik);
         menuPanel.add(bMedija);
+        menuPanel.add(tfTrazi);
+        menuPanel.add(bTrazi);
 
         tablePanel.add(scrollPane);
 
