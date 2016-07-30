@@ -1,11 +1,10 @@
 package com.ecloga.legalmaster;
 
+import com.sun.codemodel.internal.JOp;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -46,6 +45,19 @@ public class Podsetnik {
         }catch(IOException e) {
             e.printStackTrace();
         }
+
+        list.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList) evt.getSource();
+
+                if(evt.getClickCount() == 2) {
+                    int selectedIndex = list.locationToIndex(evt.getPoint());
+                    String line = String.valueOf(model.getElementAt(selectedIndex));
+
+                    JOptionPane.showMessageDialog(null, line, "Podsetnik", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
 
         bDodaj.addActionListener(new ActionListener() {
             @Override
