@@ -21,8 +21,8 @@ import java.util.HashMap;
 
 public class Predmeti {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private int width = (int) (screenSize.getWidth() * 0.6);
-    private int height = (int) (screenSize.getHeight() * 0.6);
+    private int width = (int) (screenSize.getWidth() * 0.75);
+    private int height = (int) (screenSize.getHeight() * 0.75);
     private JPanel panel, tablePanel, menuPanel;
     private DefaultTableModel model;
     private JTable table;
@@ -47,7 +47,7 @@ public class Predmeti {
         menuPanel = new JPanel();
 
         tfTrazi = new JTextField();
-        tfTrazi.setColumns(5);
+        tfTrazi.setColumns(10);
 
         model = new DefaultTableModel();
 
@@ -114,6 +114,8 @@ public class Predmeti {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!infoShown) {
+                    infoShown = true;
+
                     PredmetInfo dodaj = new PredmetInfo(Predmeti.this);
                     dodaj.show();
                 }else {
@@ -169,6 +171,8 @@ public class Predmeti {
                     for(int i = 0; i < table.getColumnCount(); i++) {
                         info.put(i, String.valueOf(table.getValueAt(selectedIndex, i)));
                     }
+
+                    infoShown = true;
 
                     PredmetInfo izmeni = new PredmetInfo(Predmeti.this, info);
                     izmeni.show();

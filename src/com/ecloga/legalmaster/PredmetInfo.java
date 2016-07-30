@@ -20,8 +20,11 @@ public class PredmetInfo {
     private JButton bSacuvaj, bOtvori;
     private String nazivForme, id;
     private HashMap<Integer, String> info = new HashMap<Integer, String>();
+    private Predmeti predmet;
 
     public PredmetInfo(Predmeti predmet) {
+        this.predmet = predmet;
+
         nazivForme = "Dodaj predmet";
 
         tfIme.setText("");
@@ -148,7 +151,7 @@ public class PredmetInfo {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                Klijenti.infoShown = false;
+                predmet.infoShown = false;
             }
         });
     }

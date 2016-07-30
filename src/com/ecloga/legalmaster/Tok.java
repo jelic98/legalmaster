@@ -96,6 +96,8 @@ public class Tok {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!infoShown){
+                    infoShown = true;
+
                     TokInfo dodaj = new TokInfo(Tok.this);
                     dodaj.show();
                 }else {
@@ -136,6 +138,8 @@ public class Tok {
                         for(int i = 0; i < table.getColumnCount(); i++) {
                             info.put(i, String.valueOf(table.getValueAt(selectedIndex, i)));
                         }
+
+                        infoShown = true;
 
                         TokInfo izmeni = new TokInfo(Tok.this, info);
                         izmeni.show();

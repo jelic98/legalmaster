@@ -17,19 +17,20 @@ import java.util.HashMap;
 
 public class Klijenti {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private int width = (int) (screenSize.getWidth() * 0.75);
-    private int height = (int) (screenSize.getHeight() * 0.75);
+    private int width = (int) (screenSize.getWidth() * 0.85);
+    private int height = (int) (screenSize.getHeight() * 0.85);
     private JPanel panel, tablePanel, menuPanel;
     private static DefaultTableModel model;
     private static JTable table;
     private JLabel lEcloga;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar, bStampaj, bTrazi;
+    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar, bStampaj, bTrazi, bPodsetnik;
     private JTextField tfTrazi;
     private static ArrayList<String> klijenti = new ArrayList<String>();
     private static int maxID = 0;
     public static boolean infoShown = false;
     public static ArrayList<String> predmetiShown = new ArrayList<String>();
+    public static boolean podsetnikShown = false;
     private JRadioButton rKlijenti, rPredmeti;
     private JFrame frame = new JFrame();
     private boolean searchShown = false;
@@ -53,7 +54,7 @@ public class Klijenti {
             }
         };
 
-        table.setPreferredScrollableViewportSize(new Dimension(width, (int) (height * 0.8)));
+        table.setPreferredScrollableViewportSize(new Dimension(width, (int) (height * 0.825)));
         table.setFillsViewportHeight(true);
         table.getTableHeader().setReorderingAllowed(false);
         table.getTableHeader().setResizingAllowed(true);
@@ -215,6 +216,21 @@ public class Klijenti {
             public void actionPerformed(ActionEvent e) {
                 Kalendar kalendar = new Kalendar();
                 kalendar.pick();
+            }
+        });
+
+        bPodsetnik = new JButton("Podsetnik");
+        bPodsetnik.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!podsetnikShown) {
+                    podsetnikShown = true;
+
+                    Podsetnik podsetnik = new Podsetnik();
+                    podsetnik.show();
+                }else {
+                    JOptionPane.showMessageDialog(null, "Podsetnik je aktivan", "Poruka", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
@@ -524,6 +540,7 @@ public class Klijenti {
         menuPanel.add(bIzmeni);
         menuPanel.add(bPredmeti);
         menuPanel.add(bKalendar);
+        menuPanel.add(bPodsetnik);
         menuPanel.add(bStampaj);
         menuPanel.add(tfTrazi);
         menuPanel.add(rKlijenti);

@@ -100,6 +100,8 @@ public class Cenovnik {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!infoShown){
+                    infoShown = true;
+
                     CenovnikInfo dodaj = new CenovnikInfo(Cenovnik.this);
                     dodaj.show();
                 }else {
@@ -142,6 +144,8 @@ public class Cenovnik {
                         for(int i = 0; i < table.getColumnCount(); i++) {
                             info.put(i, String.valueOf(table.getValueAt(selectedIndex, i)));
                         }
+
+                        infoShown = true;
 
                         CenovnikInfo izmeni = new CenovnikInfo(Cenovnik.this, info);
                         izmeni.show();
