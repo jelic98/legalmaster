@@ -12,25 +12,19 @@ import java.util.ArrayList;
 public class Podsetnik {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int width = (int) (screenSize.getWidth() * 0.3);
-    private int height = (int) (screenSize.getHeight() * 0.75);
+    private int height = (int) (screenSize.getHeight() * 0.3);
     private JPanel panel, listPanel, menuPanel;
     private JScrollPane scrollPane;
     private JButton bDodaj, bUkloni;
+    private JList list;
     private JFrame frame = new JFrame();
     private ArrayList<String> lines = new ArrayList<String>();
 
     public Podsetnik() {
-        panel = new JPanel();
-        listPanel = new JPanel();
-        menuPanel = new JPanel();
-
-        JList list = new JList();
-
         DefaultListModel model = new DefaultListModel();
 
         list.setModel(model);
-
-        scrollPane = new JScrollPane(list);
+        list.setVisibleRowCount(10);
 
         File f = new File(Main.directoryName + File.separator + "rem.lm");
 
@@ -53,7 +47,6 @@ public class Podsetnik {
             e.printStackTrace();
         }
 
-        bDodaj = new JButton("Dodaj");
         bDodaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +63,6 @@ public class Podsetnik {
             }
         });
 
-        bUkloni = new JButton("Ukloni");
         bUkloni.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,14 +85,6 @@ public class Podsetnik {
     }
 
     public void show() {
-        menuPanel.add(bDodaj);
-        menuPanel.add(bUkloni);
-
-        listPanel.add(scrollPane);
-
-        panel.add(menuPanel);
-        panel.add(listPanel);
-
         frame.setTitle("Podsetnik");
         frame.setSize(new Dimension(width, height));
         frame.setLocation(screenSize.width / 2 - width / 2,screenSize.height / 2 - height / 2);
