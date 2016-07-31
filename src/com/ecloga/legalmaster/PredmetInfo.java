@@ -139,6 +139,12 @@ public class PredmetInfo {
     }
 
     public void show() {
+        frame.setVisible(true);
+        frame.setAlwaysOnTop(true);
+        frame.toFront();
+        frame.requestFocus();
+        frame.setAlwaysOnTop(false);
+
         frame.setTitle(nazivForme);
         frame.setSize(new Dimension(width, height));
         frame.setLocation(screenSize.width / 2 - width / 2,screenSize.height / 2 - height / 2);
