@@ -266,7 +266,7 @@ public class Klijenti {
                     e1.printStackTrace();
                 }
 
-                Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "klijenti.txt", list);
+                Main.writeFile(Main.directoryName + File.separator + "print" + File.separator + "klijenti.txt", list);
 
                 list.clear();
 
@@ -332,9 +332,9 @@ public class Klijenti {
                     }
                 }
 
-                Main.writeFile(Main.directoryName + File.separator + "stampa" + File.separator + "predmeti.txt", list);
+                Main.writeFile(Main.directoryName + File.separator + "print" + File.separator + "predmeti.txt", list);
 
-                openStampa(Main.directoryName + File.separator + "stampa");
+                openStampa(Main.directoryName + File.separator + "print");
             }
         });
 
@@ -359,6 +359,7 @@ public class Klijenti {
                         rPredmeti.setVisible(false);
                         rKlijenti.setVisible(false);
                         bKalendar.setVisible(false);
+                        bPodsetnik.setVisible(false);
 
                         frame.setTitle("Pretraga");
 
@@ -373,6 +374,7 @@ public class Klijenti {
                         rPredmeti.setVisible(true);
                         rKlijenti.setVisible(true);
                         bKalendar.setVisible(true);
+                        bPodsetnik.setVisible(true);
 
                         frame.setTitle("LegalMaster");
 
