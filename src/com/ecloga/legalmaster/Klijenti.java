@@ -273,7 +273,7 @@ public class Klijenti {
                     rs = Main.s.executeQuery(cmd);
 
                     while(rs.next()) {
-                        String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("napomena");
+                        String line = rs.getInt("id") + "   " + rs.getString("sifra") + "   " + rs.getString("ime") + "   " + rs.getString("strana") + "   " + rs.getString("sud") + "   " + rs.getString("sudija") + "   " + rs.getString("napomena");
                         list.add(line);
 
                         klijentiId.add(rs.getInt("klijent"));
