@@ -83,7 +83,7 @@ public class DatePicker {
         displayDate();
 
         d.setModal(true);
-        d.setTitle("Kalendar");
+        d.setTitle("Rokovnik");
         d.setLocation(screenSize.width / 2 - width / 2, screenSize.height / 2 - height / 2);
         d.add(p1, BorderLayout.CENTER);
         d.add(p2, BorderLayout.SOUTH);
