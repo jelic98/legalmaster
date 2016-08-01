@@ -24,7 +24,7 @@ public class Klijenti {
     private static JTable table;
     private JLabel lEcloga;
     private JScrollPane scrollPane;
-    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bKalendar, bStampaj, bTrazi, bPodsetnik;
+    private JButton bDodaj, bUkloni, bIzmeni, bPredmeti, bRokovnik, bStampaj, bTrazi, bPodsetnik;
     private JTextField tfTrazi;
     private static ArrayList<String> klijenti = new ArrayList<String>();
     private static int maxID = 0;
@@ -202,8 +202,8 @@ public class Klijenti {
             }
         });
 
-        bKalendar = new JButton("Kalendar");
-        bKalendar.addActionListener(new ActionListener() {
+        bRokovnik = new JButton("Rokovnik");
+        bRokovnik.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Kalendar kalendar = new Kalendar();
@@ -350,7 +350,7 @@ public class Klijenti {
                         bStampaj.setVisible(false);
                         rPredmeti.setVisible(false);
                         rKlijenti.setVisible(false);
-                        bKalendar.setVisible(false);
+                        bRokovnik.setVisible(false);
                         bPodsetnik.setVisible(false);
 
                         frame.setTitle("Pretraga");
@@ -365,7 +365,7 @@ public class Klijenti {
                         bStampaj.setVisible(true);
                         rPredmeti.setVisible(true);
                         rKlijenti.setVisible(true);
-                        bKalendar.setVisible(true);
+                        bRokovnik.setVisible(true);
                         bPodsetnik.setVisible(true);
 
                         frame.setTitle("LegalMaster");
@@ -541,7 +541,7 @@ public class Klijenti {
         menuPanel.add(bUkloni);
         menuPanel.add(bIzmeni);
         menuPanel.add(bPredmeti);
-        menuPanel.add(bKalendar);
+        menuPanel.add(bRokovnik);
         menuPanel.add(bPodsetnik);
         menuPanel.add(bStampaj);
         menuPanel.add(tfTrazi);
