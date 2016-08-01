@@ -95,16 +95,6 @@ public class Predmeti {
             }
         });
 
-        TableColumnModel columnModel = table.getColumnModel();
-        columnModel.getColumn(0).setMaxWidth(75);
-        columnModel.getColumn(1).setPreferredWidth(100);
-        columnModel.getColumn(2).setPreferredWidth(200);
-        columnModel.getColumn(3).setPreferredWidth(200);
-        columnModel.getColumn(4).setPreferredWidth(200);
-        columnModel.getColumn(5).setPreferredWidth(200);
-        columnModel.getColumn(6).setPreferredWidth(300);
-        columnModel.getColumn(7).setMinWidth(100);
-
         refresh();
 
         scrollPane = new JScrollPane(table);
@@ -380,6 +370,16 @@ public class Predmeti {
                 e.printStackTrace();
             }
         }
+
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setMaxWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(200);
+        columnModel.getColumn(3).setPreferredWidth(200);
+        columnModel.getColumn(4).setPreferredWidth(200);
+        columnModel.getColumn(5).setPreferredWidth(200);
+        columnModel.getColumn(6).setPreferredWidth(300);
+        columnModel.getColumn(7).setMinWidth(100);
     }
 
     private void search(String keyword) {

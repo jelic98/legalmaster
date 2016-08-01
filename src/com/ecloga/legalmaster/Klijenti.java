@@ -88,14 +88,6 @@ public class Klijenti {
 
         refresh();
 
-        TableColumnModel columnModel = table.getColumnModel();
-        columnModel.getColumn(0).setMaxWidth(75);
-        columnModel.getColumn(1).setPreferredWidth(200);
-        columnModel.getColumn(2).setPreferredWidth(100);
-        columnModel.getColumn(3).setPreferredWidth(200);
-        columnModel.getColumn(4).setPreferredWidth(300);
-        columnModel.getColumn(5).setMinWidth(300);
-
         scrollPane = new JScrollPane(table);
 
         bDodaj = new JButton("Dodaj");
@@ -444,6 +436,14 @@ public class Klijenti {
         }catch(SQLException e) {
             e.printStackTrace();
         }
+
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setMaxWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(200);
+        columnModel.getColumn(2).setPreferredWidth(100);
+        columnModel.getColumn(3).setPreferredWidth(200);
+        columnModel.getColumn(4).setPreferredWidth(300);
+        columnModel.getColumn(5).setMinWidth(300);
     }
 
     private static void searchKlijenti(String keyword) {

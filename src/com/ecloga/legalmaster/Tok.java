@@ -81,12 +81,6 @@ public class Tok {
             }
         });
 
-        TableColumnModel columnModel = table.getColumnModel();
-        columnModel.getColumn(0).setMaxWidth(75);
-        columnModel.getColumn(1).setPreferredWidth(300);
-        columnModel.getColumn(2).setPreferredWidth(75);
-        columnModel.getColumn(3).setMinWidth(75);
-
         refresh();
 
         scrollPane = new JScrollPane(table);
@@ -210,6 +204,12 @@ public class Tok {
         }catch(SQLException e) {
             e.printStackTrace();
         }
+
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setMaxWidth(75);
+        columnModel.getColumn(1).setPreferredWidth(300);
+        columnModel.getColumn(2).setPreferredWidth(75);
+        columnModel.getColumn(3).setMinWidth(75);
     }
 
     private int getId() {
