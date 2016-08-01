@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3f2b9d6-a680-4759-be3c-c1a0622de8b0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/legalmaster/db.lck" afterPath="$PROJECT_DIR$/legalmaster/db.lck" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/derby.log" afterPath="$PROJECT_DIR$/derby.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" afterPath="$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java" />
     </list>
     <ignored path="LegalMaster.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,8 +96,8 @@
       <file leaf-file-name="Klijenti.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+            <state relative-caret-position="178">
+              <caret line="308" column="71" selection-start-line="308" selection-start-column="71" selection-end-line="308" selection-end-column="71" />
               <folding>
                 <element signature="e#1045#1053#0" expanded="true" />
                 <element signature="e#1201#1209#0" expanded="true" />
@@ -1115,8 +1112,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ecloga/legalmaster/Klijenti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+        <state relative-caret-position="178">
+          <caret line="308" column="71" selection-start-line="308" selection-start-column="71" selection-end-line="308" selection-end-column="71" />
           <folding>
             <element signature="e#1045#1053#0" expanded="true" />
             <element signature="e#1201#1209#0" expanded="true" />
