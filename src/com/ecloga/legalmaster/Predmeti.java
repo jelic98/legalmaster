@@ -315,7 +315,7 @@ public class Predmeti {
 
     public void update(Object[] row) {
         String id = String.valueOf(row[0]);
-        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', strana='" + row[3] + "', sud='" + row[4] + "', sudija='" + row[5] + "', napomena='" + row[3] + "' WHERE id=" + id);
+        Main.executeDB("UPDATE predmeti SET sifra='" + row[1] + "', ime='" + row[2] + "', strana='" + row[3] + "', sud='" + row[4] + "', sudija='" + row[5] + "', napomena='" + row[6] + "' WHERE id=" + id);
         refresh();
     }
 
