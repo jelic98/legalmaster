@@ -1,4 +1,4 @@
-# legal
+# LegalMaster
 
 Law practice management software.
 
