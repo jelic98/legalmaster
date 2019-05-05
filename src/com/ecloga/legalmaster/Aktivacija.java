@@ -64,7 +64,7 @@ public class Aktivacija {
         String response = "false";
 
         try {
-            url = new URL("http://www.ecloga.org/legal/activate.php?kod=" + kod);
+            url = new URL("https://lazarjelic.com/ecloga/projects/legal/activate.php?kod=" + kod);
             URLConnection con = url.openConnection();
             InputStream in = con.getInputStream();
             String encoding = con.getContentEncoding();
